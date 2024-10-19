@@ -8,11 +8,10 @@ public class CityEntrance : MonoBehaviour
     [SerializeField] private float pushForce = 10f;
     private Enemy enemy;
     [SerializeField] private int pushThreshold = 10;
-    private int pushCount = 0; 
-
+    private int pushCount = 0;
+   
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enemy is pushing the door");
         if (other.gameObject.GetComponent<Enemy>())
         {
             Interact();
@@ -24,10 +23,23 @@ public class CityEntrance : MonoBehaviour
 
         pushCount++;
         Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
-        if (pushCount >= pushThreshold)
+        if (pushCount >= pushThreshold - 3 && pushCount <= pushThreshold)
+        { 
+            DoorAlarm();
+        }
+
+        else if (pushCount >= pushThreshold)
         {
             OpenDoor();
         } 
+    }
+    public void DoorAlarm()
+    {
+       
+        {
+            Debug.Log("Door is going to open");
+            //tranfer the cam view
+        }
     }
 
     private void OpenDoor()
