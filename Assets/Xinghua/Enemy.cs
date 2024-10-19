@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private Transform target;
+    Rigidbody rb;
     private void Start()
     {
         EnemyMove();
@@ -15,15 +16,18 @@ public class Enemy : MonoBehaviour
     {
         target = newTarget;
         EnemyMove();
+
     }
+ 
     private void EnemyMove()
     {
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
 
         if (target != null)
         {
             agent.SetDestination(target.position);
-            agent.stoppingDistance = 0.1f;
+           // agent.stoppingDistance = 0.01f;
         }
         else
         {

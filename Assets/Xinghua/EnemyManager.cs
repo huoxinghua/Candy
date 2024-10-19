@@ -22,9 +22,10 @@ public class EnemyManager : MonoBehaviour
         
         var enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
         Enemy enemyScript = enemy.GetComponent<Enemy>();
+       
         if (enemyScript != null && targetLocation != null)
         {
-            enemyScript.SetTarget(targetLocation);  
+            enemyScript.SetTarget(targetLocation);
         }
     }
 
