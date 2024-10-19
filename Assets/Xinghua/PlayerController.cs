@@ -1,18 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-   Rigidbody rb;
+    Rigidbody rb;
+    private PlayerInput playerInput;
+    private float movementX;
+    private float movementY;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpHeight;
+    bool isGrounded;
+
+    private void Awake()
+    {
+        playerInput = new PlayerInput();
+    }
     void Start()
     {
-        rb = gameObject.AddComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        rb.constraints =RigidbodyConstraints.FreezeRotation;
+    }
+    void FixedUpdate()
+    {
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        rb.velocity = movement * moveSpeed;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+    }
+ 
+    // in input behavior need use Invoke unity envents
+    private void OnMove(InputAction.CallbackContext ctx)
+    {
+        Vector2 movementVector = ctx.ReadValue<Vector2>();
+        movementX = movementVector.x;
+        movementY = movementVector.y;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        playerInput.Enable();
+        playerInput.PlayerControl.Move.performed += OnMove;
+        playerInput.PlayerControl.Jump.canceled += OnJump;
+    }
+    private void OnDisable()
+    {
+        playerInput.Disable();
+        playerInput.PlayerControl.Move.canceled -= OnMove;
+        playerInput.PlayerControl.Jump.canceled -= OnJump;
+    }
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpHeight,ForceMode.Impulse);
+            Debug.Log("on jump" + rb.velocity);
+            //rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
+            Debug.Log("on jump after" + rb.velocity);
+        }
     }
 }
