@@ -1,33 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPerfab;
-    [SerializeField] private Transform[] spawnLocation;
-    [SerializeField] private Transform[] targetLocation;
-    [SerializeField] private float spawnInterval = 5f;  
-    private float timer = 0f;
-    private void SpawnEnemy()
+    private NavMeshAgent agent;
+    [SerializeField] private Transform target;
+    private void Start()
     {
-        if (spawnLocation.Length == 0)
-        {
-            Debug.LogError("No spawn locations available!");
-            return;
-        }
-        int randomIndex = Random.Range(0, spawnLocation.Length);
-        Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
-        
+        EnemyMove();
     }
-
-    private void Update()
+    public void SetTarget(Transform newTarget)
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
+        target = newTarget;
+        EnemyMove();
+    }
+    private void EnemyMove()
+    {
+        agent = GetComponent<NavMeshAgent>();
+
+        if (target != null)
         {
-            SpawnEnemy();  
-            timer = 0f;  
+            agent.SetDestination(target.position);
+            agent.stoppingDistance = 0.1f;
+        }
+        else
+        {
+            Debug.LogError("no target");
         }
     }
 }
