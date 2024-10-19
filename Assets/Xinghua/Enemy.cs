@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPerfab;
     [SerializeField] private Transform[] spawnLocation;
+    [SerializeField] private Transform[] targetLocation;
     [SerializeField] private float spawnInterval = 5f;  
     private float timer = 0f;
     private void SpawnEnemy()
