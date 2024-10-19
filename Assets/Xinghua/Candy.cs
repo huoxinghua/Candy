@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Candy : MonoBehaviour
 {
+    //keep static if write here
+    private static int candyCount;
+ 
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>())
         {
-            Debug.Log("candy get");
+           
             gameObject.SetActive(false);
-            //add sound here
+            //add collect sound here
+            UpdateCandy();
+            
         }
+    }
+
+    private void UpdateCandy()
+    {
+        candyCount++;
+        Debug.Log("candy  count is " + candyCount);
     }
 }

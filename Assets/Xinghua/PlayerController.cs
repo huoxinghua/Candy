@@ -13,22 +13,41 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpHeight;
     bool isGrounded;
 
+    [SerializeField] LayerMask interactableLayer;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints =RigidbodyConstraints.FreezeRotation;
     }
+
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.velocity = movement * moveSpeed;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
- 
+
+    private void OnEnable()
+    {
+        playerInput.Enable();
+        playerInput.PlayerControl.Move.performed += OnMove;
+        playerInput.PlayerControl.Interact.performed += OnInteract;
+        playerInput.PlayerControl.Jump.canceled += OnJump;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Disable();
+        playerInput.PlayerControl.Move.canceled -= OnMove;
+        playerInput.PlayerControl.Jump.canceled -= OnJump;
+    }
+
     // in input behavior need use Invoke unity envents
     private void OnMove(InputAction.CallbackContext ctx)
     {
@@ -37,18 +56,28 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    private void OnEnable()
+    private void OnInteract(InputAction.CallbackContext ctx)
     {
-        playerInput.Enable();
-        playerInput.PlayerControl.Move.performed += OnMove;
-        playerInput.PlayerControl.Jump.canceled += OnJump;
+        TryInteract();
     }
-    private void OnDisable()
+
+    private void TryInteract()
     {
-        playerInput.Disable();
-        playerInput.PlayerControl.Move.canceled -= OnMove;
-        playerInput.PlayerControl.Jump.canceled -= OnJump;
+       
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 12f, interactableLayer))
+        {
+            var interactor = hit.transform.GetComponent<IInteractable>();
+
+            if (interactor != null)
+            {
+                interactor.Interact();
+            }
+            
+        }
     }
+    
+
     public void OnJump(InputAction.CallbackContext ctx)
     {
         if (isGrounded)
