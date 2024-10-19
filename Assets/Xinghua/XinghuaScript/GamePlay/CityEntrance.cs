@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.ProBuilder.Shapes;
 
 public class CityEntrance : MonoBehaviour
@@ -9,7 +10,7 @@ public class CityEntrance : MonoBehaviour
     private Enemy enemy;
     [SerializeField] private int pushThreshold = 10;
     private int pushCount = 0;
-   
+    public UnityEvent CameraTrigger;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Enemy>())
@@ -26,6 +27,7 @@ public class CityEntrance : MonoBehaviour
         if (pushCount >= pushThreshold - 3 && pushCount <= pushThreshold)
         { 
             DoorAlarm();
+            CameraTrigger?.Invoke();
         }
 
         else if (pushCount >= pushThreshold)

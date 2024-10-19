@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class CameraManager: Singleton<CameraManager>
 {
     [SerializeField] GameObject[] virtualCameras;
-    public UnityEvent CameraTrigger;
+   
     public void ActiveSoloCamera(GameObject cam)
     {
         foreach(var camera in virtualCameras)
