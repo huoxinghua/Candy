@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CameraManager: Singleton<CameraManager>
+public class CameraManager: MonoBehaviour
 {
     [SerializeField] GameObject[] virtualCameras;
    

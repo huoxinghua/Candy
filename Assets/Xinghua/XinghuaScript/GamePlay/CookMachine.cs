@@ -17,6 +17,7 @@ public class CookMachine:MonoBehaviour,IInteractable
         Debug.Log("Gave Candy to Calm down the grave walker");
 
         //Countdown the candy number put number in gameManager or Candy Manager
+        GameManager.Instance.FeedCandy();
 
 
 

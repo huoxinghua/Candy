@@ -23,11 +23,11 @@ public class CityEntrance : MonoBehaviour
     {
 
         pushCount++;
-        Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
+       // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= pushThreshold - 3 && pushCount <= pushThreshold)
         { 
             DoorAlarm();
-            CameraTrigger?.Invoke();
+           
         }
 
         else if (pushCount >= pushThreshold)
@@ -39,21 +39,27 @@ public class CityEntrance : MonoBehaviour
     {
        
         {
-            Debug.Log("Door is going to open");
+            // Debug.Log("Door is going to open");
             //tranfer the cam view
+            CameraTrigger?.Invoke();
         }
     }
 
     private void OpenDoor()
     {
-        Rigidbody doorRb = gameObject.AddComponent<Rigidbody>();
-        if (doorRb != null)
+        Rigidbody doorRb = gameObject.GetComponent<Rigidbody>();
+        if (doorRb == null)
+        {
+             doorRb = gameObject.AddComponent<Rigidbody>();
+        }
+        else if (doorRb != null)
         {
             Vector3 pushDirection = transform.position - enemy.transform.position;
             pushDirection.y = 0;
 
             doorRb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
         }
+        else { Debug.LogError("Failed to get or add Rigidbody to the door."); }
     }
   
 }

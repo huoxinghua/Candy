@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext ctx)
     {
+
         TryInteract();
     }
 
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
             if (interactor != null)
             {
+                Debug.Log("get Ekey");
                 interactor.Interact();
             }
             
