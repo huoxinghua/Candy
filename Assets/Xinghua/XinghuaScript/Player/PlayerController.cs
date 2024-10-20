@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
     // ctx input behavior need use Invoke unity envents
     private void OnMove(InputAction.CallbackContext ctx)
     {
-         Debug.Log("Move now");
          Vector2 movementVector = ctx.ReadValue<Vector2>();
          Vector3 forward = Camera.main.transform.forward;
         forward.y = 0;
