@@ -7196,8 +7196,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20577979, y: 0.41759607, z: -0.09769344, w: 0.8796159}
-  m_LocalPosition: {x: -14.094011, y: 18.929234, z: -3.9855652}
+  m_LocalRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LocalPosition: {x: -3.6140118, y: 8.872139, z: 12.674487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7754,13 +7754,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368498413}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08300018, y: 0.38700008, z: 0.45899963}
+  m_LocalRotation: {x: -0, y: 0.13589226, z: -0, w: 0.99072367}
+  m_LocalPosition: {x: 0.22092676, y: 0.38700008, z: 0.39070082}
   m_LocalScale: {x: 0.26343, y: 0.26343, z: 0.26343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978860444}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.62, z: 0}
 --- !u!43 &1397390415
 Mesh:
   m_ObjectHideFlags: 0
@@ -12010,6 +12010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   jumpHeight: 30
+  sensitivityX: 1
+  sensitivityY: 1
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -12084,7 +12086,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 64
   m_CollisionDetection: 1
 --- !u!114 &1978860448
 MonoBehaviour:
@@ -13426,13 +13428,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134293387}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39699984, y: 0.38700008, z: 0.25999975}
+  m_LocalRotation: {x: -0, y: 0.13589226, z: -0, w: 0.99072367}
+  m_LocalPosition: {x: -0.29492712, y: 0.38700008, z: 0.32829857}
   m_LocalScale: {x: 0.26343, y: 0.26343, z: 0.26343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978860444}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.62, z: 0}
 --- !u!1001 &2993039598366255904
 PrefabInstance:
   m_ObjectHideFlags: 0

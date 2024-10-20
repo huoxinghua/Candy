@@ -23,17 +23,18 @@ public class CityEntrance : MonoBehaviour
     {
 
         pushCount++;
-       // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
+        // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= pushThreshold - 3 && pushCount <= pushThreshold)
-        { 
+        {
             DoorAlarm();
-           
+
         }
 
         else if (pushCount >= pushThreshold)
         {
             OpenDoor();
-        } 
+        }
+     
     }
     public void DoorAlarm()
     {

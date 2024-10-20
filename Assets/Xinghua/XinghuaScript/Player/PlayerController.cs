@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     private PlayerInput playerInput;
+    private Vector3 movement;
     private float movementX;
     private float movementY;
     [SerializeField] float moveSpeed;
@@ -29,9 +30,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+       //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+     
         rb.velocity = movement * moveSpeed;
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+
+        if (movement != Vector3.zero)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), moveSpeed * Time.deltaTime);
     }
 
     private void OnEnable()
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Enable();
         playerInput.PlayerControl.Move.performed += OnMove;
         playerInput.PlayerControl.Interact.performed += OnInteract;
-        playerInput.PlayerControl.Look.performed += OnLook;
+        //playerInput.PlayerControl.Look.performed += OnLook;
         playerInput.PlayerControl.Jump.canceled += OnJump;
     }
 
@@ -48,14 +53,19 @@ public class PlayerController : MonoBehaviour
         playerInput.Disable();
         playerInput.PlayerControl.Move.canceled -= OnMove;
         playerInput.PlayerControl.Jump.canceled -= OnJump;
+        playerInput.PlayerControl.Look.performed -= OnLook;
     }
 
-    // in input behavior need use Invoke unity envents
+    // ctx input behavior need use Invoke unity envents
     private void OnMove(InputAction.CallbackContext ctx)
     {
-        Vector2 movementVector = ctx.ReadValue<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
+         Debug.Log("Move now");
+         Vector2 movementVector = ctx.ReadValue<Vector2>();
+         Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0;
+        Vector3 right = Camera.main.transform.right;
+        right.y = 0;
+        movement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
     }
 
     private void OnInteract(InputAction.CallbackContext ctx)
@@ -94,14 +104,10 @@ public class PlayerController : MonoBehaviour
     }
     public void OnLook(InputAction.CallbackContext ctx)
     {
-        Debug.Log("player rotate");
         Vector2 lookVector = ctx.ReadValue<Vector2>();
         float mouseX = lookVector.x * sensitivityX;  // Horizontal rotation
         float mouseY = lookVector.y * sensitivityY;  // Vertical rotation
-
-      
-
-        // Rotate player body horizontally (Y-axis)
+        // Rotate player body horizontally
         this.transform.Rotate(Vector3.up * mouseX);
 
     }

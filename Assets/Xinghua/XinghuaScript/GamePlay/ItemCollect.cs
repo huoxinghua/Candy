@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemCollect : MonoBehaviour
 {
-    ////keep static if write here
-    //private static int candyCount;
+    public UnityEvent CameraTrigger;
    
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +23,7 @@ public class ItemCollect : MonoBehaviour
             {
                 Debug.LogError("GameManager.Instance is null! GameManager is not initialized.");
             }
+            CameraTrigger?.Invoke();
         }
         
         
