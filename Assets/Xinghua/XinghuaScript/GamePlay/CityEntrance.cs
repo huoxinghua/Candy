@@ -7,17 +7,17 @@ using UnityEngine.ProBuilder.Shapes;
 public class CityEntrance : MonoBehaviour
 {
     [SerializeField] private float pushForce = 10f;
-    private Enemy enemy;
+    private AIEnemy enemy;
     [SerializeField] private int pushThreshold = 10;
     private int pushCount = 0;
     public UnityEvent CameraTrigger;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Enemy>())
+        if (other.gameObject.GetComponent<AIEnemy>())
         {
             Interact();
         }
-        enemy = other.gameObject.GetComponent<Enemy>();
+        enemy = other.gameObject.GetComponent<AIEnemy>();
     }
     public void Interact()
     {

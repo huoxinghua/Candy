@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
         int randomIndex = Random.Range(0, spawnLocation.Length);
         
         var enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        AIEnemy enemyScript = enemy.GetComponent<AIEnemy>();
        
         if (enemyScript != null && targetLocation != null)
         {
