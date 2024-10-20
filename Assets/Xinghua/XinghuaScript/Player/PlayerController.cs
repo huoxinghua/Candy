@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpHeight;
     bool isGrounded;
-
+    [SerializeField] private float sensitivityX = 1f;  
+    [SerializeField] private float sensitivityY = 1f;  
     [SerializeField] LayerMask interactableLayer;
 
     private void Awake()
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Enable();
         playerInput.PlayerControl.Move.performed += OnMove;
         playerInput.PlayerControl.Interact.performed += OnInteract;
+        playerInput.PlayerControl.Look.performed += OnLook;
         playerInput.PlayerControl.Jump.canceled += OnJump;
     }
 
@@ -89,5 +91,18 @@ public class PlayerController : MonoBehaviour
             //rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
             Debug.Log("on jump after" + rb.velocity);
         }
+    }
+    public void OnLook(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("player rotate");
+        Vector2 lookVector = ctx.ReadValue<Vector2>();
+        float mouseX = lookVector.x * sensitivityX;  // Horizontal rotation
+        float mouseY = lookVector.y * sensitivityY;  // Vertical rotation
+
+      
+
+        // Rotate player body horizontally (Y-axis)
+        this.transform.Rotate(Vector3.up * mouseX);
+
     }
 }
