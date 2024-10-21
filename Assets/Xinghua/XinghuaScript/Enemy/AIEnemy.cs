@@ -10,6 +10,7 @@ public class AIEnemy : MonoBehaviour
     Rigidbody rb;
     private void Start()
     {
+       
         EnemyMove();
     }
     public void SetTarget(Transform newTarget)

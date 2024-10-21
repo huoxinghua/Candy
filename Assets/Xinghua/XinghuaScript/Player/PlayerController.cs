@@ -16,18 +16,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sensitivityX = 1f;  
     [SerializeField] private float sensitivityY = 1f;  
     [SerializeField] LayerMask interactableLayer;
-
+    private Animator animator;
     private void Awake()
     {
         playerInput = new PlayerInput();
+
     }
 
     void Start()
     {
+       
         rb = GetComponent<Rigidbody>();
         rb.constraints =RigidbodyConstraints.FreezeRotation;
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("isWalking",false);
+    }
+    private void Update()
+    {
+        HandleAninaton();
     }
 
+    private void HandleAninaton()
+    {
+        var velocity = rb.velocity;
+        if (velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else { animator.SetBool("isWalking", false); }
+    }
     void FixedUpdate()
     {
        //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
@@ -37,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (movement != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), moveSpeed * Time.deltaTime);
+       
     }
 
     private void OnEnable()
@@ -65,6 +83,7 @@ public class PlayerController : MonoBehaviour
         Vector3 right = Camera.main.transform.right;
         right.y = 0;
         movement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
+        
     }
 
     private void OnInteract(InputAction.CallbackContext ctx)
