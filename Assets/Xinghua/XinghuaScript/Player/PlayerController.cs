@@ -15,17 +15,15 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     [SerializeField] private float sensitivityX = 1f;  
     [SerializeField] private float sensitivityY = 1f;  
-    [SerializeField] LayerMask interactableLayer;
+   // [SerializeField] LayerMask interactableLayer;
     private Animator animator;
     private void Awake()
     {
         playerInput = new PlayerInput();
-
     }
 
     void Start()
     {
-       
         rb = GetComponent<Rigidbody>();
         rb.constraints =RigidbodyConstraints.FreezeRotation;
         animator = GetComponentInChildren<Animator>();
@@ -61,7 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.Enable();
         playerInput.PlayerControl.Move.performed += OnMove;
-        playerInput.PlayerControl.Interact.performed += OnInteract;
+       // playerInput.PlayerControl.Interact.performed += OnInteract;
         //playerInput.PlayerControl.Look.performed += OnLook;
         playerInput.PlayerControl.Jump.canceled += OnJump;
     }
@@ -86,28 +84,32 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnInteract(InputAction.CallbackContext ctx)
-    {
+    //private void OnInteract(InputAction.CallbackContext ctx)
+    //{
+    //    Debug.Log("get E key");
+    //    TryInteract();
+    //}
 
-        TryInteract();
-    }
+    //private void TryInteract()
+    //{
+    //    RaycastHit hit;
+    //    Debug.DrawLine(transform.position, transform.forward * 120f,Color.red);
+    //    if (Physics.Raycast(transform.position, transform.forward, out hit, 12f, interactableLayer))
+    //    {
+    //        Debug.Log("TryInteract");
+    //        var interactor = hit.transform.GetComponent<IInteractable>();
 
-    private void TryInteract()
-    {
-       
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 12f, interactableLayer))
-        {
-            var interactor = hit.transform.GetComponent<IInteractable>();
-
-            if (interactor != null)
-            {
-                Debug.Log("get Ekey");
-                interactor.Interact();
-            }
-            
-        }
-    }
+    //        if (interactor != null)
+    //        {
+    //            Debug.Log("find the Interactable"+ interactor);
+    //            interactor.Interact();
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("not find the Interactable" );
+    //        }
+    //    }
+    //}
     
 
     public void OnJump(InputAction.CallbackContext ctx)

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Candy : ItemCollect
 {
+    private void Start()
+    {
+        itemName = "Candy";
+    }
 
 }

@@ -41,8 +41,9 @@ public class CityEntrance : MonoBehaviour
        
         {
             // Debug.Log("Door is going to open");
+
             //tranfer the cam view
-            CameraTrigger?.Invoke();
+           // CameraTrigger?.Invoke();
         }
     }
 

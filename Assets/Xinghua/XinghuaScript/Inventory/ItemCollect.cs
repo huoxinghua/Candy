@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class ItemCollect : MonoBehaviour
 {
     public UnityEvent CameraTrigger;
+    protected string  itemName;
    
     private void OnTriggerEnter(Collider other)
     {
@@ -16,17 +17,14 @@ public class ItemCollect : MonoBehaviour
            
            if (GameManager.Instance != null)
             {
-                Debug.Log("GameManager instance is valid. Calling UpdateItemCount.");
-                GameManager.Instance.AddItemCount();
+                Inventory.Instance.AddItem(itemName, 1);
             }
             else
             {
                 Debug.LogError("GameManager.Instance is null! GameManager is not initialized.");
             }
-            CameraTrigger?.Invoke();
+           // CameraTrigger?.Invoke();
         }
-        
-        
     }
 
 }

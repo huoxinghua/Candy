@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5822199046190534724}
   - component: {fileID: 518902751284689087}
   - component: {fileID: 2876142210841142419}
-  - component: {fileID: 711859278960859786}
+  - component: {fileID: 5547785909933275902}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -108,7 +108,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &711859278960859786
+--- !u!114 &5547785909933275902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,21 +117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2335127419273843798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc8fc82c3328a546abcd5563ca18964, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bc74e550e6ca1e43b74793d86842ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTrigger:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: ActiveSoloCamera
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
