@@ -6,11 +6,17 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class CityEntrance : MonoBehaviour
 {
+    [SerializeField] private GameObject cameraAlarm;
+    private bool isAlarmed;
     [SerializeField] private float pushForce = 10f;
     private AIEnemy enemy;
     [SerializeField] private int pushThreshold = 10;
     private int pushCount = 0;
-    public UnityEvent CameraTrigger;
+
+    private void Start()
+    {
+        isAlarmed = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<AIEnemy>())
@@ -24,30 +30,30 @@ public class CityEntrance : MonoBehaviour
 
         pushCount++;
         // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
-        if (pushCount >= pushThreshold - 3 && pushCount <= pushThreshold)
+        if (pushCount >= 1 && pushCount <= pushThreshold)
         {
-            DoorAlarm();
-
+            if (!isAlarmed)
+            {
+                DoorAlarm();
+                isAlarmed = true;
+            }
+            
         }
 
         else if (pushCount >= pushThreshold)
         {
-            OpenDoor();
+            DoorBeenOpened();
+
         }
      
     }
     public void DoorAlarm()
     {
-       
-        {
-            // Debug.Log("Door is going to open");
-
-            //tranfer the cam view
-           // CameraTrigger?.Invoke();
-        }
+        // Debug.Log("Door is going to open");
+        CameraManager.Instance.AlarmCamera(cameraAlarm, true);
     }
 
-    private void OpenDoor()
+    private void DoorBeenOpened()
     {
         Rigidbody doorRb = gameObject.GetComponent<Rigidbody>();
         if (doorRb == null)

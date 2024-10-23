@@ -6,16 +6,52 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CameraManager: MonoBehaviour
+public class CameraManager: Singleton<CameraManager>
 {
+    public UnityEvent CameraTrigger;
+    private GameObject lastCamera;
+    private GameObject alarmCamera;
+    private GameObject currentCamera;
     [SerializeField] GameObject[] virtualCameras;
-   
-    public void ActiveSoloCamera(GameObject cam)
+    [SerializeField] GameObject defaultCamera;
+    private void Start()
     {
-        foreach(var camera in virtualCameras)
+        ActiveSoloCamera(defaultCamera,false);
+        currentCamera = defaultCamera;
+    }
+    public void ActiveSoloCamera(GameObject cam,bool isAlarming)
+    {
+        if (isAlarming)
         {
-            cam.SetActive(false);
+            alarmCamera = cam;
+            cam.SetActive(true);
+           
         }
-       cam.SetActive(true);
+        else
+        {
+            currentCamera = cam;
+            foreach (var camera in virtualCameras)
+            {
+                camera.SetActive(false);
+            }
+            cam.SetActive(true);
+            lastCamera = cam;
+        }
+    }
+    
+    public void AlarmCamera(GameObject cam,bool isAlarming)
+    {
+        ActiveSoloCamera(cam, true);
+        StartCoroutine(SwitchBackToLastCamera());
+    }
+
+    IEnumerator SwitchBackToLastCamera()
+    {
+        Debug.Log("Switching back in 5 seconds");
+        yield return new WaitForSeconds(5f); 
+        currentCamera.SetActive(true);         
+        alarmCamera.SetActive(false);     
+        Debug.Log("Switched back to: " + lastCamera.name);
     }
 }
+

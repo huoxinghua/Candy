@@ -28,7 +28,7 @@ public class Inventory : Singleton<Inventory>
         {
              collectedItems.Add(itemName, value);
         }
-        Debug.Log($"Added {value} {itemName}. Now you have {collectedItems[itemName]} {itemName}");
+        //Debug.Log($"Added {value} {itemName}. Now you have {collectedItems[itemName]} {itemName}");
         
     }
     private void RemoveItem(string itemName,int value) 
@@ -39,7 +39,7 @@ public class Inventory : Singleton<Inventory>
         }
         else
         {
-            Debug.Log("Please collect more apple or banana");
+            //Debug.Log("Please collect more apple or banana");
         }
         //when use need remove
     }
