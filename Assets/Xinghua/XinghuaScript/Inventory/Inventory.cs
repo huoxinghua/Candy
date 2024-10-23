@@ -6,7 +6,7 @@ using UnityEngine;
 public class Inventory : Singleton<Inventory>
 {
     private int currentItemCount;
-    Dictionary<string,int> collectedItems = new Dictionary<string,int>();
+    public Dictionary<string,int> collectedItems = new Dictionary<string,int>();
     private void Start()
     {
         InitializeItem();
