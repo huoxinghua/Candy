@@ -30,7 +30,7 @@ public class CityEntrance : MonoBehaviour
 
         pushCount++;
         // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
-        if (pushCount >= 1 && pushCount <= pushThreshold)
+        if (pushCount >= 3 && pushCount <= pushThreshold)
         {
             if (!isAlarmed)
             {
