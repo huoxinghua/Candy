@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private GameObject enemy;
     private AIEnemy enemyScript;
     private float timer = 0f;
+    private bool isSpawned =false  ;
 
     private void SpawnEnemy()
     {
@@ -23,7 +24,8 @@ public class EnemyManager : MonoBehaviour
         int randomIndex = Random.Range(0, spawnLocation.Length);
         
         enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
-        EnemyMove();
+        isSpawned = true;
+        
     }
     private void EnemyMove()
     {
@@ -35,7 +37,6 @@ public class EnemyManager : MonoBehaviour
             enemyScript.SetTarget(targetLocation);
         }
     }
-   
 
     private void Update()
     {
@@ -44,6 +45,10 @@ public class EnemyManager : MonoBehaviour
         {
             SpawnEnemy();  
             timer = 0f;
+        }
+        if (isSpawned)
+        {
+            EnemyMove();
         }
     }
 }

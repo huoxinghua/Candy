@@ -18,9 +18,13 @@ public class HumanNormal : Npc, IInteractable
 
     public void ChangeCloth()
     {
-
         render.material = humanMaterial;
     }
+    public void BeenChanged()
+    {
+        render.material = enemyMaterial;
+    }
+
     private void HunmanMove()
     {
         npc.NpcMove();

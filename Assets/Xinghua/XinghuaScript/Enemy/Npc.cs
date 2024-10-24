@@ -27,7 +27,6 @@ public class Npc : MonoBehaviour
 
         if (target != null)
         {
-            Debug.Log("Move" + gameObject.name);
             agent.SetDestination(target.position);
            // agent.stoppingDistance = 0.01f;
         }
