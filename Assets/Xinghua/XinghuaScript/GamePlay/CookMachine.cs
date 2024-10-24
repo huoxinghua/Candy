@@ -16,8 +16,8 @@ public class CookMachine : MonoBehaviour,IInteractable
     public void Interact()
     {
         //Countdown the candy number 
-        Inventory.Instance.UseCandy();
-        CameraManager.Instance.ActiveSoloCamera(cameraView, true);
+        Inventory.Instance.CookCandy();
+        //CameraManager.Instance.ActiveSoloCamera(cameraView, true);
     }
     public void CookMachineDamaged()
     {

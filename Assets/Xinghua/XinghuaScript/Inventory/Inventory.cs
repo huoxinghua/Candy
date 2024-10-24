@@ -43,7 +43,7 @@ public class Inventory : Singleton<Inventory>
         }
         //when use need remove
     }
-    private void CookCandy()
+    public void CookCandy()
     {
        
         //apple + banana can make candy
