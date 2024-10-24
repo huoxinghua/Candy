@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 3281421968805577128}
   - component: {fileID: 5831452732394072105}
   - component: {fileID: 5161211366104962958}
-  m_Layer: 9
+  - component: {fileID: -990572290676685045}
+  m_Layer: 7
   m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +105,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -172,3 +173,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}
+--- !u!114 &-990572290676685045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329169387700096724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a82c34fbb9b642b7b2120458249ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}

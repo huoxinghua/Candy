@@ -62,8 +62,9 @@ public class Interactor : MonoBehaviour
 
             if (interactor != null)
             {
-                Debug.Log("find the Interactable" + interactor);
+               
                 interactor.Interact();
+                Debug.Log("find the Interactable" + interactor);
             }
             else
             {
