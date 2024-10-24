@@ -7,6 +7,7 @@ public class AIEnemy : Npc
 {
     private CookMachine cookMachine;
     private CandyDevourer candyDevourer;
+    private  CityEntrance cityEntrance;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<HumanNormal>())
@@ -29,6 +30,12 @@ public class AIEnemy : Npc
             Debug.Log("boss damage");
             candyDevourer = other.gameObject.GetComponent<CandyDevourer>();
             candyDevourer.CandyDevourerDamaged();
+        }
+        else if (other.gameObject.GetComponent<CityEntrance>())
+        {
+            Debug.Log("boss damage");
+            cityEntrance = other.gameObject.GetComponent<CityEntrance>();
+            cityEntrance.Interact();
         }
 
 

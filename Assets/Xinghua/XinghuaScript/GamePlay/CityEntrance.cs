@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
-public class CityEntrance : MonoBehaviour
+public class CityEntrance : MoveDoor
 {
     [SerializeField]private GameObject cameraAlarm;
     private bool isAlarmed;
@@ -34,7 +35,7 @@ public class CityEntrance : MonoBehaviour
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
     }
-    public void Interact()
+    public override void Interact()
     {
        
         pushCount++;
@@ -48,9 +49,10 @@ public class CityEntrance : MonoBehaviour
             }
         }
 
-        else if (HPBar.fillAmount ==1)
+        else if (HPBar.fillAmount <= 0)
         {
-            DoorBeenOpened();
+            //DoorBeenOpened();
+            StartCoroutine(MoveDoorCoroutine(targetPosition));
         }
         else 
         {

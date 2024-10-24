@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveDoor : MonoBehaviour,IInteractable
 {
     private Vector3 closedPosition;
-    private Vector3 targetPosition;
+    protected Vector3 targetPosition;
     [SerializeField] Vector3 offsetPosition;
 
     private void Start()
@@ -14,14 +14,14 @@ public class MoveDoor : MonoBehaviour,IInteractable
         closedPosition = transform.position;
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         // Set the target position relative to the closed position
         targetPosition = closedPosition + offsetPosition;
         StartCoroutine(MoveDoorCoroutine(targetPosition));
     }
 
-    private IEnumerator MoveDoorCoroutine(Vector3 targetPosition)
+    protected IEnumerator MoveDoorCoroutine(Vector3 targetPosition)
     {
         float duration = 1.0f; // Duration of the movement
         float elapsedTime = 0f;
