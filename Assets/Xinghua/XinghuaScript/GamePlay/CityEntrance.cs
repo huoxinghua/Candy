@@ -3,31 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UI;
 
 public class CityEntrance : MonoBehaviour
 {
-    [SerializeField] private GameObject cameraAlarm;
+    private GameObject cameraAlarm;
     private bool isAlarmed;
     [SerializeField] private float pushForce = 10f;
     private AIEnemy enemy;
-    [SerializeField] private int pushThreshold = 10;
-    private int pushCount = 0;
+    [SerializeField] public float pushThreshold = 10;
+    [SerializeField] public float currentPushThreshold ;
+    protected float pushCount = 0;
+   // [SerializeField] Image HPBar;
+
 
     private void Start()
     {
         isAlarmed = false;
+        currentPushThreshold = 10;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<AIEnemy>())
         {
+            currentPushThreshold--;
+          //  HPBar.fillAmount = Mathf.Clamp(currentPushThreshold / pushThreshold, 0, 1);
+            Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
     }
     public void Interact()
     {
-
+       
         pushCount++;
         // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= 3 && pushCount <= pushThreshold)
