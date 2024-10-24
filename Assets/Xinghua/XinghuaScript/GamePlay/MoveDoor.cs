@@ -7,6 +7,7 @@ public class MoveDoor : MonoBehaviour,IInteractable
 {
     private Vector3 closedPosition;
     private Vector3 targetPosition;
+    [SerializeField] Vector3 offsetPosition;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class MoveDoor : MonoBehaviour,IInteractable
     public void Interact()
     {
         // Set the target position relative to the closed position
-        targetPosition = closedPosition + new Vector3(0, 0, 4); 
+        targetPosition = closedPosition + offsetPosition;
         StartCoroutine(MoveDoorCoroutine(targetPosition));
     }
 

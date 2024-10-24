@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HumanNormal : MonoBehaviour
+public class HumanNormal : Npc
 {
-    [SerializeField] Transform patrolLocation;
-    private NavMeshAgent agent;
+    Npc npc;
     private void Start()
     {
-        HumanMove();
+        npc = gameObject.GetComponent<Npc>();
+        HunmanMove();
     }
-    private void HumanMove()
+    private void HunmanMove()
     {
-        agent =gameObject.GetComponent<NavMeshAgent>();
-        agent.SetDestination(patrolLocation.position);
-
+        npc.NpcMove();
     }
 }

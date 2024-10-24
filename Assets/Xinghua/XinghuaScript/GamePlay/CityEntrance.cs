@@ -37,13 +37,11 @@ public class CityEntrance : MonoBehaviour
                 DoorAlarm();
                 isAlarmed = true;
             }
-            
         }
 
         else if (pushCount >= pushThreshold)
         {
             DoorBeenOpened();
-
         }
      
     }

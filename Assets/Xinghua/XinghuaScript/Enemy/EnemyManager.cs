@@ -8,7 +8,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject enemyPerfab;
     [SerializeField] private Transform[] spawnLocation;
     [SerializeField] private Transform targetLocation;
-    [SerializeField] private float spawnInterval = 5f;  
+    [SerializeField] private float spawnInterval = 5f;
+    private GameObject enemy;
+    private AIEnemy enemyScript;
     private float timer = 0f;
 
     private void SpawnEnemy()
@@ -20,14 +22,20 @@ public class EnemyManager : MonoBehaviour
         }
         int randomIndex = Random.Range(0, spawnLocation.Length);
         
-        var enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
-        AIEnemy enemyScript = enemy.GetComponent<AIEnemy>();
-       
+        enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
+        EnemyMove();
+    }
+    private void EnemyMove()
+    {
+        enemyScript = enemy.GetComponent<AIEnemy>();
+
         if (enemyScript != null && targetLocation != null)
         {
+            //enemyScript.NpcMove();
             enemyScript.SetTarget(targetLocation);
         }
     }
+   
 
     private void Update()
     {
