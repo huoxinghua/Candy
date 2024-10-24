@@ -30,7 +30,7 @@ public class CityEntrance : MoveDoor
         {
             GameManager.Instance.currentPushThreshold -= GameManager.Instance.doorDamageAmount;
             HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentPushThreshold / GameManager.Instance.pushThreshold, 0, 1);
-            Debug.Log("pushThresholdLost is" + currentPushThreshold);
+            //Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
@@ -56,7 +56,7 @@ public class CityEntrance : MoveDoor
         }
         else 
         {
-            Debug.Log("door is closed");
+           // Debug.Log("door is closed");
         }
      
     }

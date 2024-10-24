@@ -33,7 +33,6 @@ public class AIEnemy : Npc
         }
         else if (other.gameObject.GetComponent<CityEntrance>())
         {
-            Debug.Log("boss damage");
             cityEntrance = other.gameObject.GetComponent<CityEntrance>();
             cityEntrance.Interact();
         }

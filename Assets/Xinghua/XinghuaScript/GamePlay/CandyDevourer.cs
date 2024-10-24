@@ -17,21 +17,36 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     public void Interact()
     {
         //Countdown the candy number  
-        Inventory.Instance.UseCandy();
+        Inventory.Instance.EatCandy();
+        CheckCandyEaten();
+        Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
+        Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
+
         //increase the cityEntrance Defense Value
 
-       // CameraManager.Instance.ActiveSoloCamera(cameraView, true);
+        // CameraManager.Instance.ActiveSoloCamera(cameraView, true);
     }
     public void CandyDevourerDamaged()
     {
         GameManager.Instance.currentDurability--;
+       
         if (GameManager.Instance.currentDurability <= 0)
         {
             Destroy(gameObject);
             GameManager.Instance.GameOver();
         }
-        
+        isDamaged = true;
     }
+    private void CheckCandyEaten()
+    {
+        if (GameManager.Instance.candyEatAlready >= GameManager.Instance.candyEatMaxAmount)
+        {
+            GameManager.Instance.WinGame();
+        }
+    }
+    public void CandyDevourerDefence()
+    {
 
+    }
 
 }
