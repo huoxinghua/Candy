@@ -26,8 +26,7 @@ public class CookMachine : MonoBehaviour,IInteractable
         {
             Destroy(gameObject);
         }
-           
-
+        GameManager.Instance.GameOver();    
     }
     
   
