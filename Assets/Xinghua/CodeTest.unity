@@ -4531,7 +4531,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 341199195}
-  - component: {fileID: 341199196}
   m_Layer: 0
   m_Name: CityEntranceManager
   m_TagString: Untagged
@@ -4555,20 +4554,6 @@ Transform:
   - {fileID: 75489877}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341199196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341199193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ce1531f8caf794b9ae60fe04c23e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPBar: {fileID: 6821704420252751709}
-  cityEntrance: {fileID: 0}
 --- !u!1 &355885076
 GameObject:
   m_ObjectHideFlags: 0
@@ -10259,8 +10244,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.30793256, y: -0.18561113, z: 0.026299024, w: -0.9327564}
-  m_LocalPosition: {x: 6.42, y: 17.855156, z: -20.584578}
+  m_LocalRotation: {x: 0.31242132, y: 0.081700996, z: -0.01157609, w: 0.94635296}
+  m_LocalPosition: {x: -4.0299997, y: 20.367424, z: -12.979151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17237,6 +17222,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 341199195}
     m_Modifications:
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: HPBar
+      value: 
+      objectReference: {fileID: 6821704420252751709}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: cameraAlarm
+      value: 
+      objectReference: {fileID: 533050576}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: damageAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: doorEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: doorEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1067276946}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: doorEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_Name
       value: CityEntrance

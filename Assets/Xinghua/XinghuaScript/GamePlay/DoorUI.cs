@@ -6,21 +6,21 @@ using UnityEngine.UI;
 
 public class DoorUI : Singleton<DoorUI>
 {
-    [SerializeField] Image HPBar;
-    [SerializeField] private CityEntrance cityEntrance;
-    void Start()
-    {
-       cityEntrance = gameObject.GetComponent<CityEntrance>();
-        // currentPushThreshold = pushThreshold;
-        Debug.Log("cityEntrance" + cityEntrance);
-    }
+    //[SerializeField] Image HPBar;
+    //[SerializeField] private CityEntrance cityEntrance;
+    //void Start()
+    //{
+    //   cityEntrance = gameObject.GetComponent<CityEntrance>();
+    //    // currentPushThreshold = pushThreshold;
+    //    Debug.Log("cityEntrance" + cityEntrance);
+    //}
 
-    private void Update()
-    {
+    //private void Update()
+    //{
       
-        HPBar.fillAmount = Mathf.Clamp(cityEntrance.currentPushThreshold / cityEntrance.pushThreshold, 0, 1);
+    //    HPBar.fillAmount = Mathf.Clamp(cityEntrance.currentPushThreshold / cityEntrance.pushThreshold, 0, 1);
      
-    }
+    //}
     
 
 }

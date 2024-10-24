@@ -41,6 +41,7 @@ public class CameraManager: Singleton<CameraManager>
     
     public void AlarmCamera(GameObject cam,bool isAlarming)
     {
+        
         ActiveSoloCamera(cam, true);
         StartCoroutine(SwitchBackToLastCamera());
     }

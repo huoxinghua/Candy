@@ -7,27 +7,30 @@ using UnityEngine.UI;
 
 public class CityEntrance : MonoBehaviour
 {
-    private GameObject cameraAlarm;
+    [SerializeField]private GameObject cameraAlarm;
     private bool isAlarmed;
     [SerializeField] private float pushForce = 10f;
     private AIEnemy enemy;
     [SerializeField] public float pushThreshold = 10;
     [SerializeField] public float currentPushThreshold ;
+    [SerializeField] private float damageAmount = 0.03f;
     protected float pushCount = 0;
-   // [SerializeField] Image HPBar;
+    [SerializeField] Image HPBar;
+ 
 
 
     private void Start()
     {
         isAlarmed = false;
-        currentPushThreshold = 10;
+        currentPushThreshold = pushThreshold;
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<AIEnemy>())
         {
-            currentPushThreshold--;
-          //  HPBar.fillAmount = Mathf.Clamp(currentPushThreshold / pushThreshold, 0, 1);
+            currentPushThreshold-= damageAmount;
+            HPBar.fillAmount = Mathf.Clamp(currentPushThreshold / pushThreshold, 0, 1);
             Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
