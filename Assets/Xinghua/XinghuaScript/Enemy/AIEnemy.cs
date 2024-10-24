@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class AIEnemy : Npc
 {
+    private CookMachine cookMachine;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<HumanNormal>())
@@ -16,5 +17,14 @@ public class AIEnemy : Npc
                 humanNormal.BeenChanged();
             }
         }
+        else if(other.gameObject.GetComponent<CookMachine>())
+        {
+            Debug.Log("cook machine damage");
+            cookMachine = other.gameObject.GetComponent<CookMachine>();
+            Debug.Log("cook machine" + cookMachine);
+            cookMachine.CookMachineDamaged();
+        }
+
+    
     }
 }
