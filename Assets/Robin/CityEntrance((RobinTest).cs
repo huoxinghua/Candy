@@ -10,8 +10,8 @@ public class Gate : MonoBehaviour
     private bool isAlarmed;
     [SerializeField] private float pushForce = 10f;
     private AIEnemy enemy;
-    [SerializeField] protected int pushThreshold = 10;
-    [SerializeField] protected int pushCount = 0;
+    [SerializeField] protected float pushThreshold = 6;
+    [SerializeField] protected float pushCount = 0;
 
     private void Start()
     {
