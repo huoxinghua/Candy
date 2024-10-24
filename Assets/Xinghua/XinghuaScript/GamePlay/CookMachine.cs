@@ -25,8 +25,9 @@ public class CookMachine : MonoBehaviour,IInteractable
         if (currentDurability <= 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.GameOver();
         }
-        GameManager.Instance.GameOver();    
+        
     }
     
   

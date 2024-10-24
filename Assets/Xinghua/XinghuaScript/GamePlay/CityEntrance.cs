@@ -17,20 +17,18 @@ public class CityEntrance : MonoBehaviour
     protected float pushCount = 0;
     [SerializeField] Image HPBar;
  
-
-
     private void Start()
     {
         isAlarmed = false;
-        currentPushThreshold = pushThreshold;
+        GameManager.Instance.currentPushThreshold = GameManager.Instance.pushThreshold;
 
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<AIEnemy>())
         {
-            currentPushThreshold-= damageAmount;
-            HPBar.fillAmount = Mathf.Clamp(currentPushThreshold / pushThreshold, 0, 1);
+            GameManager.Instance.currentPushThreshold -= GameManager.Instance.doorDamageAmount;
+            HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentPushThreshold / GameManager.Instance.pushThreshold, 0, 1);
             Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
@@ -50,9 +48,13 @@ public class CityEntrance : MonoBehaviour
             }
         }
 
-        else if (pushCount >= pushThreshold)
+        else if (HPBar.fillAmount ==1)
         {
             DoorBeenOpened();
+        }
+        else 
+        {
+            Debug.Log("door is closed");
         }
      
     }

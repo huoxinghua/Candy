@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AIEnemy : Npc
 {
     private CookMachine cookMachine;
+    private CandyDevourer candyDevourer;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<HumanNormal>())
@@ -21,10 +22,15 @@ public class AIEnemy : Npc
         {
             Debug.Log("cook machine damage");
             cookMachine = other.gameObject.GetComponent<CookMachine>();
-            Debug.Log("cook machine" + cookMachine);
             cookMachine.CookMachineDamaged();
         }
+        else if (other.gameObject.GetComponent<CandyDevourer>())
+        {
+            Debug.Log("boss damage");
+            candyDevourer = other.gameObject.GetComponent<CandyDevourer>();
+            candyDevourer.CandyDevourerDamaged();
+        }
 
-    
+
     }
 }
