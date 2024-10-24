@@ -16122,7 +16122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2960681940182526184, guid: 5dbe1766b2374f0438f19ea0049206c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.674487
+      value: -15.41
       objectReference: {fileID: 0}
     - target: {fileID: 2960681940182526184, guid: 5dbe1766b2374f0438f19ea0049206c6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16156,12 +16156,21 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1383500319}
+    - target: {fileID: 5161211366104962958, guid: 5dbe1766b2374f0438f19ea0049206c6, type: 3}
+      propertyPath: newTarget
+      value: 
+      objectReference: {fileID: 1798588132714944052}
     m_RemovedComponents:
     - {fileID: -990572290676685045, guid: 5dbe1766b2374f0438f19ea0049206c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbe1766b2374f0438f19ea0049206c6, type: 3}
+--- !u!4 &1798588132714944052 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8327819274948213477, guid: e7e0dbdf22d61054aa292f14c5b6f5e3, type: 3}
+  m_PrefabInstance: {fileID: 5106173918088024767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2129280777591682096
 MonoBehaviour:
   m_ObjectHideFlags: 0

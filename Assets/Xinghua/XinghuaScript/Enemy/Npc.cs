@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Npc : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
     [SerializeField] private Transform target;
     Rigidbody rb;
     private void Start()

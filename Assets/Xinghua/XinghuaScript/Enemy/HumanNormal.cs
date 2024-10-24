@@ -7,6 +7,8 @@ public class HumanNormal : Npc, IInteractable
 {
     [SerializeField] private Material humanMaterial;
     [SerializeField] private Material enemyMaterial;
+    [SerializeField] private Transform newTarget;
+    
     private Renderer render;
     Npc npc;
     private void Start()
@@ -23,6 +25,13 @@ public class HumanNormal : Npc, IInteractable
     public void BeenChanged()
     {
         render.material = enemyMaterial;
+        Destroy(this);
+        if (this.gameObject.GetComponent<AIEnemy>() == null)
+        {
+            this.gameObject.AddComponent<AIEnemy>();
+        }
+
+        agent.SetDestination(newTarget.position);
     }
 
     private void HunmanMove()
