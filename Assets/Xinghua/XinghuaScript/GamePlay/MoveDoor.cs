@@ -6,21 +6,22 @@ using UnityEngine;
 public class MoveDoor : MonoBehaviour,IInteractable
 {
     private Vector3 closedPosition;
-    private Vector3 targetPosition;
+    protected Vector3 targetPosition;
+    [SerializeField] Vector3 offsetPosition;
 
     private void Start()
     {
         closedPosition = transform.position;
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         // Set the target position relative to the closed position
-        targetPosition = closedPosition + new Vector3(0, 0, 4); 
+        targetPosition = closedPosition + offsetPosition;
         StartCoroutine(MoveDoorCoroutine(targetPosition));
     }
 
-    private IEnumerator MoveDoorCoroutine(Vector3 targetPosition)
+    protected IEnumerator MoveDoorCoroutine(Vector3 targetPosition)
     {
         float duration = 1.0f; // Duration of the movement
         float elapsedTime = 0f;
@@ -38,5 +39,9 @@ public class MoveDoor : MonoBehaviour,IInteractable
 
         // Ensure the door is exactly at the target position
         transform.position = targetPosition;
+    }
+    public void ShowKeyToInteract()
+    {
+
     }
 }

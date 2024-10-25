@@ -43,34 +43,33 @@ public class Inventory : Singleton<Inventory>
         }
         //when use need remove
     }
-    private void CookCandy()
+    public void CookCandy()
     {
-       
-        //apple + banana can make candy
-        RemoveItem("Apple",2);
-        RemoveItem("Banana", 1);
-        AddItem("Candy",1);
-    }
-    public void UseCandy()
-    {
-        Debug.Log("Use candy");
-        if (collectedItems.ContainsKey("Candy")&& collectedItems["Candy"]>0)
+       if(collectedItems.ContainsKey("Apple") && collectedItems["Apple"] > 1 && collectedItems.ContainsKey("Banana") && collectedItems["Banana"]> 0)
         {
-            RemoveItem("Candy", 1);
-        }
-        else if (collectedItems.ContainsKey("Apple") && collectedItems["Apple"] >= 2 &&
-           collectedItems.ContainsKey("Banana") && collectedItems["Banana"] >= 1)
-        {
-            CookCandy(); 
+            //apple + banana can make candy
+            RemoveItem("Apple", 2);
+            RemoveItem("Banana", 1);
+            AddItem("Candy", 1);
             Debug.Log("Candy cooked successfully.");
-            UseCandy(); 
         }
+        
         else
         {
             Debug.Log("Not enough ingredients to cook Candy.");
         }
-        Debug.Log("Now you have Candy" + collectedItems["Candy"]);
     }
-    
+    public void EatCandy()
+    {
+       
+        if (collectedItems.ContainsKey("Candy")&& collectedItems["Candy"]>0)
+        {
+            Debug.Log("eat candy");
+            RemoveItem("Candy", 1);
+            GameManager.Instance.candyEatAlready++;
+        }
+       // Debug.Log("Now you have Candy" + collectedItems["Candy"]);
+    }
+  
 
 }

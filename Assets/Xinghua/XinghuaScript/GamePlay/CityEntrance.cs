@@ -1,33 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UI;
 
-public class CityEntrance : MonoBehaviour
+public class CityEntrance : MoveDoor
 {
-    [SerializeField] private GameObject cameraAlarm;
+    [SerializeField]private GameObject cameraAlarm;
     private bool isAlarmed;
     [SerializeField] private float pushForce = 10f;
     private AIEnemy enemy;
-    [SerializeField] private int pushThreshold = 10;
-    private int pushCount = 0;
-
+    [SerializeField] public float pushThreshold = 10;
+    [SerializeField] public float currentPushThreshold ;
+    [SerializeField] private float damageAmount = 0.03f;
+    protected float pushCount = 0;
+    [SerializeField] Image HPBar;
+ 
     private void Start()
     {
         isAlarmed = false;
+        GameManager.Instance.currentPushThreshold = GameManager.Instance.pushThreshold;
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<AIEnemy>())
         {
+            GameManager.Instance.currentPushThreshold -= GameManager.Instance.doorDamageAmount;
+            HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentPushThreshold / GameManager.Instance.pushThreshold, 0, 1);
+            //Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
     }
-    public void Interact()
+    public override void Interact()
     {
-
+       
         pushCount++;
         // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= 3 && pushCount <= pushThreshold)
@@ -37,13 +47,16 @@ public class CityEntrance : MonoBehaviour
                 DoorAlarm();
                 isAlarmed = true;
             }
-            
         }
 
-        else if (pushCount >= pushThreshold)
+        else if (HPBar.fillAmount <= 0)
         {
-            DoorBeenOpened();
-
+            //DoorBeenOpened();
+            StartCoroutine(MoveDoorCoroutine(targetPosition));
+        }
+        else 
+        {
+           // Debug.Log("door is closed");
         }
      
     }

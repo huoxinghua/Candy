@@ -35,8 +35,8 @@ public class Interactor : MonoBehaviour
     {
         if (isNearbyInteractable)
         {
-            Debug.Log("Press E TryInteract");
             TryInteract();
+
         }
     }
     private void CheckForInteractable()
@@ -62,8 +62,11 @@ public class Interactor : MonoBehaviour
 
             if (interactor != null)
             {
-                Debug.Log("find the Interactable" + interactor);
+
+                interactor.ShowKeyToInteract();
                 interactor.Interact();
+               
+                Debug.Log("find the Interactable" + interactor);
             }
             else
             {
