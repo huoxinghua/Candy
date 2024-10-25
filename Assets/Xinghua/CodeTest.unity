@@ -14387,11 +14387,11 @@ PrefabInstance:
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 72946707}
+      objectReference: {fileID: 442420498}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: newTarget
       value: 
-      objectReference: {fileID: 1820371852}
+      objectReference: {fileID: 7431798564998144231}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: enemyMaterial
       value: 
@@ -18010,11 +18010,11 @@ PrefabInstance:
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 72946707}
+      objectReference: {fileID: 442420498}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: newTarget
       value: 
-      objectReference: {fileID: 1820371852}
+      objectReference: {fileID: 7431798564998144231}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: enemyMaterial
       value: 
@@ -18366,11 +18366,11 @@ PrefabInstance:
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 72946707}
+      objectReference: {fileID: 442420498}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: newTarget
       value: 
-      objectReference: {fileID: 1820371852}
+      objectReference: {fileID: 7431798564998144231}
     - target: {fileID: 3775242376627749278, guid: 055e72dd1225b92428bea4ab1e88b72c, type: 3}
       propertyPath: enemyMaterial
       value: 
@@ -18711,6 +18711,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3072072, y: 4.06, z: 1.3834375}
   m_Center: {x: -0.15360484, y: 0.9243245, z: -0.1917228}
+--- !u!4 &7431798564998144231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8327819274948213477, guid: e7e0dbdf22d61054aa292f14c5b6f5e3, type: 3}
+  m_PrefabInstance: {fileID: 5106173918088024767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &7769408156094503682
 CanvasRenderer:
   m_ObjectHideFlags: 0
