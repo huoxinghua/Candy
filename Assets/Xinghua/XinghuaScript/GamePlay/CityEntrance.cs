@@ -53,6 +53,7 @@ public class CityEntrance : MoveDoor
         {
             //DoorBeenOpened();
             StartCoroutine(MoveDoorCoroutine(targetPosition));
+            SoundManager.Instance.PlaySFX("DoorOpenSfx");
         }
         else 
         {
@@ -64,7 +65,8 @@ public class CityEntrance : MoveDoor
     {
         // Debug.Log("Door is going to open");
         CameraManager.Instance.AlarmCamera(cameraAlarm, true);
-    }
+        SoundManager.Instance.PlaySFX("DoorAlarm");
+}
 
     private void DoorBeenOpened()
     {
