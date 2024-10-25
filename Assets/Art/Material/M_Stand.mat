@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_PumpkingBody 2
+  m_Name: M_Stand
   m_Shader: {fileID: -6465566751694194690, guid: 55351a6424f498449aefc203aab2f297, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 039f7c0da5ae5ca4a8d186278d092221, type: 3}
+        m_Texture: {fileID: 2800000, guid: 870028da525483d4596acaf3107d24fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: 039f7c0da5ae5ca4a8d186278d092221, type: 3}
+        m_Texture: {fileID: 2800000, guid: a3b5b61fc573e2d43b42eba8aa4982f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -73,11 +73,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mettalic:
-        m_Texture: {fileID: 2800000, guid: 838706c4d6eb93c4aa296c55762baf02, type: 3}
+        m_Texture: {fileID: 2800000, guid: e36e77b920c87e84c81d0202fe4afa38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 8c6f179876e73074683c4581ffbd7cc3, type: 3}
+        m_Texture: {fileID: 2800000, guid: b28a7319e3f50ea49a643b87f0b07e84, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -89,7 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _roughness:
-        m_Texture: {fileID: 2800000, guid: cbcc02b47ae9af24ea3f9a9443c5fc7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 994e08a54196dfd4c90330ceddd4b901, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
