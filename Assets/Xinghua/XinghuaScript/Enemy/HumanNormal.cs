@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HumanNormal : Npc, IInteractable
+public class HumanNormal : Npc,IInteractable
 {
     [SerializeField] private Material humanMaterial;
     [SerializeField] private Material enemyMaterial;
@@ -42,6 +42,13 @@ public class HumanNormal : Npc, IInteractable
     {
         Debug.Log("change enemy look");
         ChangeCloth();
-    }     
-        
+    }
+    public void ShowKeyToInteract()
+    {
+
+    }
+
+
+
+
 }

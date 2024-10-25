@@ -28,7 +28,10 @@ public class CookMachine : MonoBehaviour,IInteractable
             GameManager.Instance.GameOver();
         } 
     }
-    
-  
+    public void  ShowKeyToInteract()
+    {
+        // UI manager to show
+    }
+
 
 }

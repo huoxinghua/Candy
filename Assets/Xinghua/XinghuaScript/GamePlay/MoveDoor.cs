@@ -40,4 +40,8 @@ public class MoveDoor : MonoBehaviour,IInteractable
         // Ensure the door is exactly at the target position
         transform.position = targetPosition;
     }
+    public void ShowKeyToInteract()
+    {
+
+    }
 }

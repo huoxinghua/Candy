@@ -61,9 +61,10 @@ public class Inventory : Singleton<Inventory>
     }
     public void EatCandy()
     {
-        Debug.Log("eat candy");
+       
         if (collectedItems.ContainsKey("Candy")&& collectedItems["Candy"]>0)
         {
+            Debug.Log("eat candy");
             RemoveItem("Candy", 1);
             GameManager.Instance.candyEatAlready++;
         }

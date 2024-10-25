@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public float maxDurability = 2f;
     public float candyEatMaxAmount;
     public float candyEatAlready;
+    public float candyEnergy =2f;
 
     [Header("candy value")]
     private float candy;
@@ -23,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     {
       //  doorDamageAmount = 2f;
        candyEatAlready = 0;
+       candyEatMaxAmount = 30;
 }
     public void GameOver()
     {
