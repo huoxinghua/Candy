@@ -175,8 +175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   humanMaterial: {fileID: 7450862882992107626, guid: b3636a41e27f65449841b71082765652, type: 3}
-  enemyMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: f1bd483dbc69eb046a60019466146bff, type: 2}
   newTarget: {fileID: 0}
+  childRenderer: {fileID: 224403367490909151}
 --- !u!65 &5986111869030968661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -263,6 +264,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3636a41e27f65449841b71082765652, type: 3}
+--- !u!137 &224403367490909151 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8408251167231446081, guid: b3636a41e27f65449841b71082765652, type: 3}
+  m_PrefabInstance: {fileID: 8623590983179337630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8081603094612744309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3636a41e27f65449841b71082765652, type: 3}

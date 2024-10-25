@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3281421968805577128}
   - component: {fileID: 5831452732394072105}
   - component: {fileID: 5161211366104962958}
-  - component: {fileID: -990572290676685045}
   m_Layer: 7
   m_Name: Human
   m_TagString: Untagged
@@ -32,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 329169387700096724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6140118, y: -7.032139, z: -12.674487}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,17 +174,4 @@ MonoBehaviour:
   target: {fileID: 0}
   humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
   enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}
---- !u!114 &-990572290676685045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329169387700096724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717a82c34fbb9b642b7b2120458249ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
-  enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}
+  newTarget: {fileID: 0}

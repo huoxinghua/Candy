@@ -16,7 +16,7 @@ public class CameraManager: Singleton<CameraManager>
     [SerializeField] GameObject defaultCamera;
     private void Start()
     {
-        ActiveSoloCamera(defaultCamera,false);
+       // ActiveSoloCamera(defaultCamera,false);
         currentCamera = defaultCamera;
     }
     public void ActiveSoloCamera(GameObject cam,bool isAlarming)

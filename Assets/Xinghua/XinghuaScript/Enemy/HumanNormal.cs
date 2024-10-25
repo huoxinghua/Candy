@@ -8,23 +8,26 @@ public class HumanNormal : Npc,IInteractable
     [SerializeField] private Material humanMaterial;
     [SerializeField] private Material enemyMaterial;
     [SerializeField] private Transform newTarget;
+    [SerializeField] private Renderer childRenderer;
     
     private Renderer render;
     Npc npc;
     private void Start()
     {
-        render = gameObject.GetComponent<Renderer>();
+        //render = gameObject.transform.Find("FatHuman04").gameObject.GetComponentInChildren<Renderer>();//  .GetComponent<Renderer>();
+        ///render.materials[0] = enemyMaterial;
+        childRenderer.material = enemyMaterial;
         npc = gameObject.GetComponent<Npc>();
         HunmanMove();
     }
 
     public void ChangeCloth()
     {
-        render.material = humanMaterial;
+        childRenderer.material = humanMaterial;
     }
     public void BeenChanged()
     {
-        render.material = enemyMaterial;
+        childRenderer.material = enemyMaterial;
         Destroy(this);
         if (this.gameObject.GetComponent<AIEnemy>() == null)
         {
