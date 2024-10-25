@@ -3,36 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIEnemy : MonoBehaviour
+public class AIEnemy : Npc
 {
-    private NavMeshAgent agent;
-    [SerializeField] private Transform target;
-    Rigidbody rb;
-    private void Start()
+    private CookMachine cookMachine;
+    private CandyDevourer candyDevourer;
+    private  CityEntrance cityEntrance;
+    private void OnTriggerEnter(Collider other)
     {
-       
-        EnemyMove();
-    }
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
-        EnemyMove();
-
-    }
- 
-    private void EnemyMove()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-
-        if (target != null)
+        if (other.GetComponent<HumanNormal>())
         {
-            agent.SetDestination(target.position);
-           // agent.stoppingDistance = 0.01f;
+            Debug.Log("transfer people");
+            var humanNormal = other.gameObject.GetComponent<HumanNormal>();
+            if (humanNormal != null)
+            {
+                humanNormal.BeenChanged();
+            }
         }
-        else
+        else if(other.gameObject.GetComponent<CookMachine>())
         {
-            Debug.LogError("no target");
+            Debug.Log("cook machine damage");
+            cookMachine = other.gameObject.GetComponent<CookMachine>();
+            cookMachine.CookMachineDamaged();
         }
+        else if (other.gameObject.GetComponent<CandyDevourer>())
+        {
+            Debug.Log("boss damage");
+            candyDevourer = other.gameObject.GetComponent<CandyDevourer>();
+            candyDevourer.CandyDevourerDamaged();
+        }
+        else if (other.gameObject.GetComponent<CityEntrance>())
+        {
+            cityEntrance = other.gameObject.GetComponent<CityEntrance>();
+            cityEntrance.Interact();
+        }
+
+
     }
 }

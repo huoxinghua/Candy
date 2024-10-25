@@ -1,37 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private int bananaCount = 0;
-    private int appleCount = 0 ;
-    private int candyCount = 0;
+    [Header("door")]
+    public float pushThreshold = 10;
+    public float currentPushThreshold;
+    public float doorDamageAmount;
+    public float doorIncreaseAmount;
 
+    [Header("candy devourer")]
+    public float currentDurability;
+    public float maxDurability = 2f;
+    public float candyEatMaxAmount;
+    public float candyEatAlready;
+    public float candyEnergy =2f;
 
-    [SerializeField] private int pushThreshold = 10;
-
-    public void AddItemCount()
+    [Header("candy value")]
+    private float candy;
+    private void Start()
     {
-
-        Debug.Log("candy  count is " + candyCount);
-        candyCount++;
-        bananaCount++;
-        appleCount++;
-        Debug.Log("bananaCount  count is " + bananaCount);
-        Debug.Log("appleCount  count is " + appleCount);
-    }
-    public void CookCandy()
+      //  doorDamageAmount = 2f;
+       candyEatAlready = 0;
+       candyEatMaxAmount = 30;
+}
+    public void GameOver()
     {
-        candyCount--;
-        bananaCount--;
-        candyCount++;
+        Debug.Log("Game over");
+        Time.timeScale = 0f;
     }
-    public void FeedCandy()
+    public void WinGame()
     {
-        Debug.Log("I am happy wall is stronger now");
-        candyCount--;
-        pushThreshold += 5;
-    }
+        Debug.Log("you win");
+        // when the candy thirst have enough candy eaten already,will win the game
+        // all the enemy and changed people will back to normal
 
+        //stop spaw enemy 
+        EnemyManager.Instance.StopSpawnEnemy();
+        //show win menu
+        Time.timeScale = 0f;
+    }
 }
