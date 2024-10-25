@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     private PlayerInput playerInput;
-    private Vector3 movement;
+    private Vector3 targetMovement;
+  
     private float movementX;
     private float movementY;
     [SerializeField] float moveSpeed;
@@ -15,8 +16,12 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     [SerializeField] private float sensitivityX = 1f;  
     [SerializeField] private float sensitivityY = 1f;  
+    private bool isTopView;
    // [SerializeField] LayerMask interactableLayer;
     private Animator animator;
+
+    [SerializeField] private GameObject topCamera;
+    [SerializeField] private GameObject followCamera;
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -47,11 +52,11 @@ public class PlayerController : MonoBehaviour
     {
        //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
      
-        rb.velocity = movement * moveSpeed;
+        rb.velocity = targetMovement * moveSpeed;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
-        if (movement != Vector3.zero)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), moveSpeed * Time.deltaTime);
+        if (targetMovement != Vector3.zero)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetMovement), moveSpeed * Time.deltaTime);
        
     }
 
@@ -59,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.Enable();
         playerInput.PlayerControl.Move.performed += OnMove;
-       // playerInput.PlayerControl.Interact.performed += OnInteract;
+        playerInput.PlayerControl.CameraSwitch.performed += TopCameraSwitch;
         //playerInput.PlayerControl.Look.performed += OnLook;
         playerInput.PlayerControl.Jump.canceled += OnJump;
     }
@@ -80,8 +85,9 @@ public class PlayerController : MonoBehaviour
         forward.y = 0;
         Vector3 right = Camera.main.transform.right;
         right.y = 0;
-        movement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
-        
+
+        targetMovement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
+      
     }
 
     //private void OnInteract(InputAction.CallbackContext ctx)
@@ -111,7 +117,20 @@ public class PlayerController : MonoBehaviour
     //    }
     //}
     
-
+    private void TopCameraSwitch(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("swith camera to topview");
+        
+        if(!isTopView)
+        {
+            CameraManager.Instance.ActiveSoloCamera(topCamera, false);
+            isTopView = true;   
+        }
+        else if(isTopView)
+        {
+            CameraManager.Instance.ActiveSoloCamera(followCamera, false);
+        }
+    }
     public void OnJump(InputAction.CallbackContext ctx)
     {
         if (isGrounded)
