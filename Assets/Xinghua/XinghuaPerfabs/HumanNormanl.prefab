@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2041831926715528422}
   - component: {fileID: 481024940863440426}
   - component: {fileID: 3775242376627749278}
+  - component: {fileID: 5986111869030968661}
   m_Layer: 7
   m_Name: HumanNormanl
   m_TagString: Untagged
@@ -109,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.8768408, z: 1}
-  m_Center: {x: 0, y: 1.0374786, z: 0}
+  m_Size: {x: 1, y: 2.3531551, z: 1}
+  m_Center: {x: 0, y: 0.6765778, z: 0}
 --- !u!195 &2041831926715528422
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -173,9 +174,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
-  enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}
+  humanMaterial: {fileID: 7450862882992107626, guid: b3636a41e27f65449841b71082765652, type: 3}
+  enemyMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   newTarget: {fileID: 0}
+--- !u!65 &5986111869030968661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679624318817092324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8623590983179337630
 PrefabInstance:
   m_ObjectHideFlags: 0
