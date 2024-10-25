@@ -26,7 +26,7 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    private void PlaySFX(string name)
+    public void PlaySFX(string name)
     {
         Sound s = Array.Find(sfx, x => x.name == name);
 
