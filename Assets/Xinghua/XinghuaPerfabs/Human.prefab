@@ -171,7 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d4d435095220a4c8f222283cd8e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childRenderer: {fileID: 0}
+  humanMaterial: {fileID: 2100000, guid: 8d42dcd5a75343243ae097a1e9c52dcc, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: f1bd483dbc69eb046a60019466146bff, type: 2}
   target: {fileID: 0}
-  humanMaterial: {fileID: 2100000, guid: c59025e2c53d46449b926da18b865566, type: 2}
-  enemyMaterial: {fileID: 2100000, guid: 24ed3903f0e3d334cb6e8d856ccdbc44, type: 2}
   newTarget: {fileID: 0}

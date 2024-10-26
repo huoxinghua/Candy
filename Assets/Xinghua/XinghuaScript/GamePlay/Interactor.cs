@@ -11,8 +11,11 @@ public class Interactor : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
     private bool isNearbyInteractable = false;
     private int radius = 2;
+    public bool isInteract;
+ 
     private void Awake()
     {
+        isInteract = false;
         playerInput = new PlayerInput();
     }
     private void OnEnable()
@@ -23,7 +26,6 @@ public class Interactor : MonoBehaviour
 
     private void OnDisable()
     {
-     
         playerInput.PlayerControl.Interact.canceled -= OnInteract;
        
     }
@@ -33,6 +35,7 @@ public class Interactor : MonoBehaviour
     }
     private void OnInteract(InputAction.CallbackContext ctx)
     {
+       
         if (isNearbyInteractable)
         {
             TryInteract();
@@ -59,19 +62,27 @@ public class Interactor : MonoBehaviour
        foreach (Collider collider in colliders) 
         {
             var interactor = collider.transform.GetComponent<IInteractable>();
-
+          
             if (interactor != null)
             {
-
-                interactor.ShowKeyToInteract();
-                interactor.Interact();
-               
-                Debug.Log("find the Interactable" + interactor);
+                Debug.Log("IInteractable");
+                if (collider.transform.GetComponent<AIEnemy>())
+                {
+                    Debug.Log("find the Interactable" + interactor);
+                    collider.transform.GetComponent<AIEnemy>().ChangeToHuman();
+                }
+                else if (collider.transform.GetComponent<HumanNormal>())
+                {
+                    Debug.Log("find the Interactable" + interactor);
+                    collider.gameObject.GetComponent<HumanNormal>().ChangeToEnemy();
+                }
             }
+          
             else
             {
                 Debug.Log("not find the Interactable");
             }
+          
         }
     }
 

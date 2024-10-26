@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] private GameObject enemyPerfab;
-    [SerializeField] private Transform[] spawnLocation;
-    [SerializeField] private Transform targetLocation;
-    [SerializeField] private float spawnInterval = 5f;
     private GameObject enemy;
+    [SerializeField] private Transform[] spawnLocation;
+    [SerializeField] private GameObject targetLocation;
+    [SerializeField] private float spawnInterval = 5f;
     private AIEnemy enemyScript;
+
+
+    
     private float timer = 0f;
     private bool isSpawned = false;
     private bool isNeedSpawning = true;
-
+    [SerializeField] private Renderer childRenderer;
     private void SpawnEnemy()
     {
         if (isNeedSpawning)
@@ -27,6 +32,7 @@ public class EnemyManager : Singleton<EnemyManager>
             int randomIndex = Random.Range(0, spawnLocation.Length);
 
             enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position, Quaternion.identity);
+            enemyScript = enemy.AddComponent<AIEnemy>();    
             isSpawned = true;
         }
         
@@ -37,12 +43,13 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     private void EnemyMove()
     {
-        enemyScript = enemy.GetComponent<AIEnemy>();
-
-        if (enemyScript != null && targetLocation != null)
+        Debug.Log("enemyScript"+ enemyScript);
+        Debug.Log("targetLocation" + targetLocation);
+        if (targetLocation != null)
         {
-            //enemyScript.NpcMove();
+
             enemyScript.SetTarget(targetLocation);
+            Debug.Log("targetLocation" + targetLocation);
         }
     }
 
@@ -54,9 +61,15 @@ public class EnemyManager : Singleton<EnemyManager>
             SpawnEnemy();  
             timer = 0f;
         }
-        if (isSpawned)
+        else if (enemyScript !=null)
         {
             EnemyMove();
         }
+       
+            
+    }
+    public void Interact()
+    {
+
     }
 }

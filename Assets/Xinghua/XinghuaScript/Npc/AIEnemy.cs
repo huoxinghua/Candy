@@ -3,31 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIEnemy : Npc
+public class AIEnemy : Npc, IInteractable
 {
     private CookMachine cookMachine;
     private CandyDevourer candyDevourer;
     private  CityEntrance cityEntrance;
+    private PlayerController player;
+    private AIEnemy enemy;
+
+    private void Start()
+    {
+       
+        //set default material 
+        childRenderer = gameObject.GetComponent<Renderer>();
+        childRenderer.material = humanMaterial;
+        
+        
+    }
+    public void ChangeToHuman()
+    {
+        
+        childRenderer = gameObject.GetComponent<Renderer>();
+        childRenderer.material = humanMaterial;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<HumanNormal>())
         {
-            Debug.Log("transfer people");
+            //transfer people
             var humanNormal = other.gameObject.GetComponent<HumanNormal>();
             if (humanNormal != null)
             {
-                humanNormal.BeenChanged();
+                humanNormal.ChangeToEnemy(); 
             }
         }
         else if(other.gameObject.GetComponent<CookMachine>())
         {
-            Debug.Log("cook machine damage");
+            //cook machine damage
             cookMachine = other.gameObject.GetComponent<CookMachine>();
             cookMachine.CookMachineDamaged();
         }
         else if (other.gameObject.GetComponent<CandyDevourer>())
         {
-            Debug.Log("boss damage");
+            //boss damage
             candyDevourer = other.gameObject.GetComponent<CandyDevourer>();
             candyDevourer.CandyDevourerDamaged();
         }
@@ -36,7 +54,17 @@ public class AIEnemy : Npc
             cityEntrance = other.gameObject.GetComponent<CityEntrance>();
             cityEntrance.Interact();
         }
-
-
+        // enemy_ zombie will be change to human by player
+        else if (other.gameObject.GetComponent<PlayerController>())
+        {
+           
+            var interactor = other.gameObject.GetComponent<Interactor>();
+            if (interactor.isInteract)
+            {
+                childRenderer.material = humanMaterial;
+            }
+          
+        }
     }
+    
 }
