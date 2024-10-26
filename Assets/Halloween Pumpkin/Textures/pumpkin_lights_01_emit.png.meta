@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44178c7319185934db02b5ba6e0eaf82
+guid: 47b2eff22977f1f4988bd2bc015d31be
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,3 +106,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 153723
+  packageName: Halloween Pumpkin Lantern
+  packageVersion: 1.1
+  assetPath: Assets/Halloween Pumpkin/Textures/pumpkin_lights_01_emit.png
+  uploadId: 425243

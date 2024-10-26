@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d9806ffd0f65b44d8edeaa538018240
+guid: f6979cd0378b478488fe0c9b552c089c
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -97,3 +97,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 153723
+  packageName: Halloween Pumpkin Lantern
+  packageVersion: 1.1
+  assetPath: Assets/Halloween Pumpkin/Textures/pumpkin_01.png
+  uploadId: 425243

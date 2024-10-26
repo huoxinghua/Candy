@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAninaton()
     {
-        var velocity = rb.velocity;
+        var velocity = rb.linearVelocity;
         if (velocity.magnitude > 0.1f)
         {
             animator.SetBool("isWalking", true);
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
        //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
      
-        rb.velocity = movement * moveSpeed;
+        rb.linearVelocity = movement * moveSpeed;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
         if (movement != Vector3.zero)
@@ -115,9 +115,9 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHeight,ForceMode.Impulse);
-            Debug.Log("on jump" + rb.velocity);
+            Debug.Log("on jump" + rb.linearVelocity);
             //rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
-            Debug.Log("on jump after" + rb.velocity);
+            Debug.Log("on jump after" + rb.linearVelocity);
         }
     }
     public void OnLook(InputAction.CallbackContext ctx)
