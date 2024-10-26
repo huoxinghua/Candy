@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CookMachine:MonoBehaviour,IInteractable
+public class CookMachine : MonoBehaviour,IInteractable
 {
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] GameObject cameraView;
+    private AIEnemy ememy;
+    [SerializeField] private float maxDurability = 2f;
+    private float currentDurability;
+    private void Start()
     {
-        if (collision.gameObject.GetComponent<PlayerController>())
-        {
-            Debug.Log("I need more Candy");
-            //Show text press e to gave
-        }
+        currentDurability = maxDurability;
     }
     public void Interact()
     {
-        Debug.Log("Gave Candy to Calm down the grave walker");
-
-        //Countdown the candy number put number in gameManager or Candy Manager
-        GameManager.Instance.FeedCandy();
-
-
-
+        //Countdown the candy number 
+        Inventory.Instance.CookCandy();
+        //CameraManager.Instance.ActiveSoloCamera(cameraView, true);
     }
+    public void CookMachineDamaged()
+    {
+        currentDurability--;
+        if (currentDurability <= 0)
+        {
+            Destroy(gameObject);
+            GameManager.Instance.GameOver();
+        } 
+    }
+    public void  ShowKeyToInteract()
+    {
+        // UI manager to show
+    }
+
+
 }
