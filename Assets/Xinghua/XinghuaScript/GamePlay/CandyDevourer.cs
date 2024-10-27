@@ -46,7 +46,7 @@ public class CandyDevourer : MonoBehaviour,IInteractable
         {
             GameManager.Instance.bossCurrentDurability -= 0.2f;
         }
-        WorldSpaceUI.Instance.ShowBossHp();
+        UIManager.Instance.ShowBossHp();
         HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
         if (GameManager.Instance.bossCurrentDurability <= 0)
         {
