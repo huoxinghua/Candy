@@ -31,8 +31,8 @@ public class CookMachine : MonoBehaviour,IInteractable
         HPBar.fillAmount = Mathf.Clamp(currentDurability / maxDurability, 0, 1);
         if (currentDurability <= 0)
         {
+            UIManager.Instance.hpBarMachine.SetActive(false);
             Destroy(gameObject);
-          
         } 
     }
     private void OnTriggerEnter(Collider other)

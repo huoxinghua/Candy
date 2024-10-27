@@ -25,7 +25,6 @@ public class HumanNormal : Npc,IInteractable
 
     public void ChangeToEnemy()
     {
-        Debug.Log("change to enemy");
         Destroy(this);
         if (this.gameObject.GetComponent<AIEnemy>() == null)
         {

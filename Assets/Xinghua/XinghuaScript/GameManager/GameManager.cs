@@ -36,15 +36,29 @@ public class GameManager : Singleton<GameManager>
         bossCurrentDurability = maxBossDurability;
         isGameBegining = true;
 }
+    private void Update()
+    {
+        if (UIManager.Instance.timeRemaining <= 0f && bossCurrentDurability <= 0)
+        {
+            GameOver();
+        }
+        //boss servive
+        else if((UIManager.Instance.timeRemaining <= 0f && bossCurrentDurability > 0))
+        {
+            WinGame();
+        }
+    }
     public void GameOver()
     {
+
         Debug.Log("Game over");
         Time.timeScale = 0f;
+        UIManager.Instance.timeRemaining = 0;
     }
     public void WinGame()
     {
+        //if boss survive in certain amount of time player will win
         Debug.Log("you win");
-        // when the candy thirst have enough candy eaten already,will win the game
         // all the enemy and changed people will back to normal
 
         //stop spaw enemy 
@@ -62,7 +76,6 @@ public class GameManager : Singleton<GameManager>
         Vector3 spawnPosition = candySpawnLocation.transform.position + randomOffset;
 
         // Instantiate the candy
- 
         Instantiate(candyPerfab, spawnPosition, Quaternion.identity);
     }
     

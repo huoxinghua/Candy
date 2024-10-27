@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header("show in word space")]
-    [SerializeField] private HpBar[] image;
-    [SerializeField] string hpBarName;
+    [Header("boss Hp in world space")]
     [SerializeField] private GameObject hpBar;
+
+    [Header("cookmachine Hp in world space")]
+    [SerializeField] private GameObject hpBarMachineFill;
+    [SerializeField] public GameObject hpBarMachine;
 
     [Header("screen")]
     [SerializeField] TMP_Text timer;
-    [SerializeField] private float timeRemaining;
+    public float timeRemaining;
     private bool timerIsRunning;
     [SerializeField] private GameObject timerUI;
 
@@ -27,23 +29,15 @@ public class UIManager : Singleton<UIManager>
         
        hpBar.SetActive(true);
     }
+ 
+
 
     void Update()
     {
-        if (timerIsRunning)
+        if (timerIsRunning && timeRemaining > 0)
         {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                UpdateTimerDisplay();
-            }
-            else
-            {
-                timeRemaining = 0;
-                timerIsRunning = false;
-                timerUI.SetActive(false);
-                TimerEnded();
-            }
+            timeRemaining -= Time.deltaTime;
+            UpdateTimerDisplay();
         }
     }
 
@@ -61,13 +55,6 @@ public class UIManager : Singleton<UIManager>
         // Update the timer text display
         timer.text = timeFormatted; 
        
-    }
-
-    private void TimerEnded()
-    {
-        //Game over
-        Debug.Log("Timer has ended!");
-        GameManager.Instance.GameOver();
     }
 
 

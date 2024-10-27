@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[SerializeField]
+[System.Serializable]
 public class HpBar
 {
     public string name;

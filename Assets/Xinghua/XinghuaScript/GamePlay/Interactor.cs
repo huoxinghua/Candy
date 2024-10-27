@@ -65,17 +65,7 @@ public class Interactor : MonoBehaviour
           
             if (interactor != null)
             {
-                if (collider.gameObject.GetComponent<AIEnemy>())
-                {
-                    Debug.Log("find the Interactable" + interactor);
-                    collider.transform.GetComponent<AIEnemy>().ChangeToHuman();
-                }
-                else if (collider.gameObject.GetComponent<HumanNormal>())
-                {
-                    Debug.Log("find the Interactable" + interactor);
-                    collider.gameObject.GetComponent<HumanNormal>().ChangeToEnemy();
-                }
-                else interactor.Interact();
+               interactor.Interact();
             }
           
             else
