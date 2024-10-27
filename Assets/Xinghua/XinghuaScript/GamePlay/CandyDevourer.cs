@@ -22,11 +22,12 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     {
         //Countdown the candy number  
         Inventory.Instance.EatCandy();
+        GameManager.Instance.SpawnCandy();
         CheckCandyEaten();
         // this bar show in UI. if the bar is full player will win
         candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
-        Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
-        Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
+        //Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
+        //Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
 
 
         //increase the cityEntrance Defense Value

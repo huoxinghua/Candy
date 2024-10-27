@@ -17,10 +17,14 @@ public class GameManager : Singleton<GameManager>
     public float candyEatMaxAmount;
     public float candyEatAlready;
     public float candyEnergy =2f;
-
+    [Header("candy spawn")]
+    [SerializeField] private GameObject candyPerfab;
+    [SerializeField] private GameObject candySpawnLocation;
+    [SerializeField]private float spawnRadius;
     [Header("CookMachine devourer")]
     public float currentCookDurability;
     public float maxCookDurability = 2f;
+    
    
     
     
@@ -31,7 +35,6 @@ public class GameManager : Singleton<GameManager>
     {
       //  doorDamageAmount = 2f;
         candyEatAlready = 0;
-        candyEatMaxAmount = 30;
         bossCurrentDurability = maxBossDurability;
 }
     public void GameOver()
@@ -49,6 +52,19 @@ public class GameManager : Singleton<GameManager>
         EnemyManager.Instance.StopSpawnEnemy();
         //show win menu
         Time.timeScale = 0f;
+    }
+    public void SpawnCandy()
+    {
+        // Generate a random offset
+        Vector3 randomOffset = new Vector3(
+            Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius) );
+
+        // Calculate the spawn position
+        Vector3 spawnPosition = candySpawnLocation.transform.position + randomOffset;
+
+        // Instantiate the candy
+ 
+        Instantiate(candyPerfab, spawnPosition, Quaternion.identity);
     }
     
 }
