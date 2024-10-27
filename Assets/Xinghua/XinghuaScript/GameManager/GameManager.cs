@@ -24,10 +24,8 @@ public class GameManager : Singleton<GameManager>
     [Header("CookMachine devourer")]
     public float currentCookDurability;
     public float maxCookDurability = 2f;
-    
-   
-    
-    
+
+    public bool isGameBegining=false;
 
     [Header("candy value")]
     private float candy;
@@ -36,6 +34,7 @@ public class GameManager : Singleton<GameManager>
       //  doorDamageAmount = 2f;
         candyEatAlready = 0;
         bossCurrentDurability = maxBossDurability;
+        isGameBegining = true;
 }
     public void GameOver()
     {

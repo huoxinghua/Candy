@@ -17,6 +17,7 @@ public class CandyDevourer : MonoBehaviour,IInteractable
         isDamaged = false;
         candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
         HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
+
     }
     public void Interact()
     {
@@ -36,7 +37,15 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     }
     public void CandyDevourerDamaged()
     {
-        GameManager.Instance.bossCurrentDurability--;
+        if (GameManager.Instance.isGameBegining && GameManager.Instance.candyEatAlready <= 0  )
+        {
+            GameManager.Instance.bossCurrentDurability--;
+            
+        }
+        else if(GameManager.Instance.isGameBegining && GameManager.Instance.candyEatAlready > 0)
+        {
+            GameManager.Instance.bossCurrentDurability -= 0.2f;
+        }
         WorldSpaceUI.Instance.ShowBossHp();
         HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
         if (GameManager.Instance.bossCurrentDurability <= 0)
