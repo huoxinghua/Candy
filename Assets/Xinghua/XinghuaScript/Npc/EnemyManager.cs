@@ -43,13 +43,13 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     private void EnemyMove()
     {
-        Debug.Log("enemyScript"+ enemyScript);
-        Debug.Log("targetLocation" + targetLocation);
+        //Debug.Log("enemyScript"+ enemyScript);
+        //Debug.Log("targetLocation" + targetLocation);
         if (targetLocation != null)
         {
 
             enemyScript.SetTarget(targetLocation);
-            Debug.Log("targetLocation" + targetLocation);
+           // Debug.Log("targetLocation" + targetLocation);
         }
     }
 

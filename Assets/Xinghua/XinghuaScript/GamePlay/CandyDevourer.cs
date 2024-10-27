@@ -9,12 +9,13 @@ public class CandyDevourer : MonoBehaviour,IInteractable
   //  [SerializeField] GameObject cameraView;
     private AIEnemy ememy;
     [SerializeField] Image HPBar;
+    [SerializeField] Image candyEatBar;
     private bool isDamaged;
     private void Start()
     {
         GameManager.Instance.bossCurrentDurability = GameManager.Instance.maxBossDurability;
         isDamaged = false;
-        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
+        candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
         HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
     }
     public void Interact()
@@ -23,7 +24,7 @@ public class CandyDevourer : MonoBehaviour,IInteractable
         Inventory.Instance.EatCandy();
         CheckCandyEaten();
         // this bar show in UI. if the bar is full player will win
-        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
+        candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
         Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
         Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
 
