@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 43dff3d493fe65646b05da5f10d7ce75, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a38726243dd8a8347b19c65cca82ab40, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &119202168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,13 +595,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407875447}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38310716, y: 0.10263224, z: -0.003317259, w: 0.9179786}
-  m_LocalPosition: {x: 0.42, y: 8.57, z: -9.08}
+  m_LocalRotation: {x: 0.12262864, y: 0.19175354, z: -0.037351627, w: 0.97303534}
+  m_LocalPosition: {x: 0.42, y: 4.81, z: -9.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 44.753, y: 15.174, z: 5.863}
+  m_LocalEulerAnglesHint: {x: 14.653, y: 22.101, z: -1.52}
 --- !u!1 &489771768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1138,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1910824629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9560814
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.51815015
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2516253
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.96782476
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -150.853
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_Name
+      value: OogieBoogieIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 061c3003d53a47b48901fceb50cf0e0b, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10dc3de41a9cfa84e9223433407cefa2, type: 3}
 --- !u!1 &2082339939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,3 +1323,4 @@ SceneRoots:
   - {fileID: 1073911903}
   - {fileID: 119202171}
   - {fileID: 1772550558}
+  - {fileID: 1910824629}
