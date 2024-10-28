@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraView: {fileID: 4881480141024262708}
-  maxDurability: 2
+  maxDurability: 300
   currentDurability: 0
   HPBar: {fileID: 0}
 --- !u!65 &3626511177447271835

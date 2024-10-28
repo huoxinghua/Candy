@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.Disable();
         playerInput.PlayerControl.Move.canceled -= OnMove;
-        //playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
+        playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed -= OnInteract;
 
     }
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext ctx)
     {
          var interactor = gameObject.GetComponent<Interactor>();
-        interactor.TryInteract();
+         interactor.PlayerTryInteract();
     }
 
     private void TopCameraSwitch(InputAction.CallbackContext ctx)
@@ -123,15 +123,5 @@ public class PlayerController : MonoBehaviour
             CameraManager.Instance.isAlarmView =false;
         }
      
-    }
- 
-    public void OnLook(InputAction.CallbackContext ctx)
-    {
-        Vector2 lookVector = ctx.ReadValue<Vector2>();
-        float mouseX = lookVector.x * sensitivityX;  // Horizontal rotation
-        float mouseY = lookVector.y * sensitivityY;  // Vertical rotation
-        // Rotate player body horizontally
-        this.transform.Rotate(Vector3.up * mouseX);
-
     }
 }

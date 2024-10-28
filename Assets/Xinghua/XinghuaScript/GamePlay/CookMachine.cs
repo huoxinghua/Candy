@@ -21,7 +21,6 @@ public class CookMachine : MonoBehaviour,IInteractable
     {
         //Countdown the candy number 
         Inventory.Instance.CookCandy();
-        //CameraManager.Instance.ActiveSoloCamera(cameraView, true);
         //HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentCookDurability / GameManager.Instance.maxCookDurability, 0, 1);
        
     }

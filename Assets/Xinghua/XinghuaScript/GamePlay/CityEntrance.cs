@@ -29,17 +29,14 @@ public class CityEntrance : MoveDoor
         if (other.gameObject.GetComponent<AIEnemy>())
         {
             GameManager.Instance.currentPushThreshold -= GameManager.Instance.doorDamageAmount;
-           // HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentPushThreshold / GameManager.Instance.pushThreshold, 0, 1);
-            //Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
     }
     public override void Interact()
     {
-       
         pushCount++;
-        // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
+         Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= 1 && pushCount <= pushThreshold)
         {
             if (!isAlarmed)

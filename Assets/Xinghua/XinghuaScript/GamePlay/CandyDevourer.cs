@@ -31,9 +31,6 @@ public class CandyDevourer : MonoBehaviour,IInteractable
         //Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
         //Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
 
-
-        //increase the cityEntrance Defense Value
-
     }
     public void CandyDevourerDamaged()
     {
@@ -66,10 +63,6 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     {
         // if have candy eaten can defance
 
-    }
-    public void ShowKeyToInteract()
-    {
-        //press e to been feed by player
     }
 
 }

@@ -1841,7 +1841,7 @@ MonoBehaviour:
   doorDamageAmount: 2
   doorIncreaseAmount: 0
   bossCurrentDurability: 0
-  maxBossDurability: 100
+  maxBossDurability: 20
   candyEatMaxAmount: 12
   candyEatAlready: 0
   candyEnergy: 0
@@ -12004,11 +12004,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12032,8 +12032,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.56, y: 3.95, z: 30.910002}
+  m_LocalRotation: {x: 0.0753623, y: 0.9284872, z: -0.30672404, w: 0.19532678}
+  m_LocalPosition: {x: 9.4, y: 12.522202, z: 11.071372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13204,11 +13204,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
---- !u!1 &1252223695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
-  m_PrefabInstance: {fileID: 1374393430}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252484050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4881480141024262708, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
@@ -13611,24 +13606,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
-      propertyPath: HPBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: cameraAlarm
       value: 
       objectReference: {fileID: 533050576}
-    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
-      propertyPath: damageAmount
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_Name
       value: CityEntrance
       objectReference: {fileID: 0}
+    - target: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281738679266046073, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4067868949575772268, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.029998
+      value: 9.15
       objectReference: {fileID: 0}
     - target: {fileID: 4067868949575772268, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13636,7 +13631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4067868949575772268, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 4067868949575772268, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13669,27 +13664,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1374393436}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
---- !u!208 &1374393436
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252223695}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &1383500318
 GameObject:
   m_ObjectHideFlags: 0
@@ -19593,7 +19569,7 @@ Transform:
   m_GameObject: {fileID: 2072988271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.489999, y: 1.5899999, z: 39}
+  m_LocalPosition: {x: -9.3, y: 1.5899999, z: 37.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19631,7 +19607,7 @@ MonoBehaviour:
   enemyPerfab: {fileID: 7072618733174613065, guid: 18aa45a67a30e3840bdf56fb7025288e, type: 3}
   spawnLocation:
   - {fileID: 2072988272}
-  targetLocation: {fileID: 1252484050}
+  targetLocation: {fileID: 1058996261510617530}
   spawnInterval: 5
   childRenderer: {fileID: 0}
 --- !u!4 &2093484054
@@ -19948,10 +19924,6 @@ PrefabInstance:
       propertyPath: HPBar
       value: 
       objectReference: {fileID: 487445811}
-    - target: {fileID: 6657015732213915566, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
-      propertyPath: maxDurability
-      value: 34
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20240,6 +20212,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1130273341071271348, guid: 4d3150265206f164d9db5a19ffdcb396, type: 3}
+      propertyPath: radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2430931756457866205, guid: 4d3150265206f164d9db5a19ffdcb396, type: 3}
       propertyPath: m_Radius
       value: 0.26416546

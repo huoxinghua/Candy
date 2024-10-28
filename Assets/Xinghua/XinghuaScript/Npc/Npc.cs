@@ -50,11 +50,9 @@ public class Npc : MonoBehaviour,IInteractable
     {
         defaultMaterial = enemyMaterial;
     }
-    public void Interact()
+    public virtual void Interact()
     {
-            Debug.Log("change  human look");
-            childRenderer.material = enemyMaterial;
-           // childRenderer.material = humanMaterial;
+           // Debug.Log("change npc look");
     }
 
     public void NpcMove()

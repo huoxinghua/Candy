@@ -41,12 +41,12 @@ public class HumanNormal : Npc,IInteractable
     {
         npc.NpcMove();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.GetComponent<AIEnemy>())
-        {
-            ChangeToEnemy();
-            childRenderer.material = enemyMaterial;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.GetComponent<AIEnemy>())
+    //    {
+    //        ChangeToEnemy();
+    //        childRenderer.material = enemyMaterial;
+    //    }
+    //}
 }
