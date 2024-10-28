@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
         if (targetMovement != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetMovement), moveSpeed * Time.deltaTime);
-       
+
     }
 
     private void OnEnable()
@@ -65,16 +65,14 @@ public class PlayerController : MonoBehaviour
         playerInput.Enable();
         playerInput.PlayerControl.Move.performed += OnMove;
         playerInput.PlayerControl.CameraSwitch.performed += TopCameraSwitch;
-        //playerInput.PlayerControl.Look.performed += OnLook;
-        playerInput.PlayerControl.Jump.canceled += OnJump;
     }
 
     private void OnDisable()
     {
         playerInput.Disable();
         playerInput.PlayerControl.Move.canceled -= OnMove;
-        playerInput.PlayerControl.Jump.canceled -= OnJump;
-        playerInput.PlayerControl.Look.performed -= OnLook;
+        playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
+
     }
 
     // ctx input behavior need use Invoke unity envents
@@ -89,37 +87,9 @@ public class PlayerController : MonoBehaviour
         targetMovement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
       
     }
-
-    //private void OnInteract(InputAction.CallbackContext ctx)
-    //{
-    //    Debug.Log("get E key");
-    //    TryInteract();
-    //}
-
-    //private void TryInteract()
-    //{
-    //    RaycastHit hit;
-    //    Debug.DrawLine(transform.position, transform.forward * 120f,Color.red);
-    //    if (Physics.Raycast(transform.position, transform.forward, out hit, 12f, interactableLayer))
-    //    {
-    //        Debug.Log("TryInteract");
-    //        var interactor = hit.transform.GetComponent<IInteractable>();
-
-    //        if (interactor != null)
-    //        {
-    //            Debug.Log("find the Interactable"+ interactor);
-    //            interactor.Interact();
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("not find the Interactable" );
-    //        }
-    //    }
-    //}
     
     private void TopCameraSwitch(InputAction.CallbackContext ctx)
     {
-        Debug.Log("swith camera to topview");
         
         if(!isTopView)
         {
@@ -130,17 +100,12 @@ public class PlayerController : MonoBehaviour
         {
             CameraManager.Instance.ActiveSoloCamera(followCamera, false);
         }
-    }
-    public void OnJump(InputAction.CallbackContext ctx)
-    {
-        if (isGrounded)
+        else if (CameraManager.Instance.isAlarmView ==true)
         {
-            rb.AddForce(Vector3.up * jumpHeight,ForceMode.Impulse);
-            Debug.Log("on jump" + rb.velocity);
-            //rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
-            Debug.Log("on jump after" + rb.velocity);
+            CameraManager.Instance.ActiveSoloCamera(followCamera, false);
         }
     }
+ 
     public void OnLook(InputAction.CallbackContext ctx)
     {
         Vector2 lookVector = ctx.ReadValue<Vector2>();

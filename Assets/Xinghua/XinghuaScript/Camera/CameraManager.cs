@@ -14,45 +14,27 @@ public class CameraManager: Singleton<CameraManager>
     private GameObject currentCamera;
     [SerializeField] GameObject[] virtualCameras;
     [SerializeField] GameObject defaultCamera;
+    public bool isAlarmView;
     private void Start()
     {
         ActiveSoloCamera(defaultCamera,false);
-       // currentCamera = defaultCamera;
+        isAlarmView = false;
     }
     public void ActiveSoloCamera(GameObject cam,bool isAlarming)
     {
-        if (isAlarming)
+        foreach (var camera in virtualCameras)
         {
-            alarmCamera = cam;
-            cam.SetActive(true);
-           
+            camera.SetActive(false);
         }
-        else
-        {
-            currentCamera = cam;
-            foreach (var camera in virtualCameras)
-            {
-                camera.SetActive(false);
-            }
-            cam.SetActive(true);
-            lastCamera = cam;
-        }
+        cam.SetActive(true);
     }
     
     public void AlarmCamera(GameObject cam,bool isAlarming)
     {
-        
         ActiveSoloCamera(cam, true);
-        StartCoroutine(SwitchBackToLastCamera());
+        isAlarmView = true;
     }
 
-    IEnumerator SwitchBackToLastCamera()
-    {
-        Debug.Log("Switching back in 5 seconds");
-        yield return new WaitForSeconds(5f); 
-        currentCamera.SetActive(true);         
-        alarmCamera.SetActive(false);     
-        Debug.Log("Switched back to: " + lastCamera.name);
-    }
+ 
 }
 

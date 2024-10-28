@@ -10,15 +10,14 @@ public class AIEnemy : Npc, IInteractable
     private  CityEntrance cityEntrance;
     private PlayerController player;
     private AIEnemy enemy;
+ 
 
     private void Start()
     {
-       
         //set default material 
         childRenderer = gameObject.GetComponent<Renderer>();
-        childRenderer.material = humanMaterial;
-        
-        
+        childRenderer.material = humanMaterial; 
+       
     }
     public void ChangeToHuman()
     {
@@ -65,6 +64,13 @@ public class AIEnemy : Npc, IInteractable
             }
           
         }
+        else if(other.GetComponent<AIEnemy>())
+        {
+            var AIenemy = other.gameObject.GetComponent<AIEnemy>();
+            //avoid
+        }
     }
-    
+
+
+
 }

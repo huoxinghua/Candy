@@ -30,7 +30,7 @@ public class HumanNormal : Npc,IInteractable
         {
             var enemyscript = this.gameObject.AddComponent<AIEnemy>();
             enemyscript.GetComponent<Renderer>();
-            Debug.Log("render" + enemyscript.GetComponent<Renderer>());
+           // Debug.Log("render" + enemyscript.GetComponent<Renderer>());
             childRenderer.material = enemyMaterial;
         }
         
