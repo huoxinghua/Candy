@@ -23,7 +23,7 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     {
         //Countdown the candy number  
         Inventory.Instance.EatCandy();
-        GameManager.Instance.SpawnCandy();
+        
         GameManager.Instance.currentCookDurability++;
         CheckCandyEaten();
         // this bar show in UI. if the bar is full player will win

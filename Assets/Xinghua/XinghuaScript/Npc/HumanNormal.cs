@@ -45,6 +45,7 @@ public class HumanNormal : Npc,IInteractable
     {
         if(other.GetComponent<AIEnemy>())
         {
+            ChangeToEnemy();
             childRenderer.material = enemyMaterial;
         }
     }
