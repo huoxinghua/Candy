@@ -63,6 +63,7 @@ public class GameManager : Singleton<GameManager>
 
         //stop spaw enemy 
         EnemyManager.Instance.StopSpawnEnemy();
+        UIManager.Instance.timerUI.SetActive(false);
         //show win menu
         Time.timeScale = 0f;
     }

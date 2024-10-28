@@ -16,7 +16,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TMP_Text timer;
     public float timeRemaining;
     private bool timerIsRunning;
-    [SerializeField] private GameObject timerUI;
+    public GameObject timerUI;
 
     private void Start()
     {
