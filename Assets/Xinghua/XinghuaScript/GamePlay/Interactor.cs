@@ -16,31 +16,7 @@ public class Interactor : MonoBehaviour
     private void Awake()
     {
         isInteract = false;
-        playerInput = new PlayerInput();
-    }
-    private void OnEnable()
-    {
-        playerInput.Enable();
-        playerInput.PlayerControl.Interact.performed += OnInteract;
-    }
-
-    private void OnDisable()
-    {
-        playerInput.PlayerControl.Interact.canceled -= OnInteract;
        
-    }
-    private void Update()
-    {
-        CheckForInteractable();
-    }
-    private void OnInteract(InputAction.CallbackContext ctx)
-    {
-       
-        if (isNearbyInteractable)
-        {
-            TryInteract();
-
-        }
     }
     private void CheckForInteractable()
     {
@@ -54,7 +30,7 @@ public class Interactor : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);  // Draw a wireframe sphere at the object's position with the set radius
     }
 
-    private void TryInteract()
+    public void TryInteract()
     {
       
         int radius = 12;
@@ -67,7 +43,6 @@ public class Interactor : MonoBehaviour
             {
                interactor.Interact();
             }
-          
             else
             {
                 Debug.Log("not find the Interactable");
