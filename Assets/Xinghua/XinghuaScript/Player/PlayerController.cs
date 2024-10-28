@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject topCamera;
     [SerializeField] private GameObject followCamera;
+    private bool isFollowCamera;
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         rb.constraints =RigidbodyConstraints.FreezeRotation;
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("isWalking",false);
+        isFollowCamera = true;
+        isTopView = false;
     }
     private void Update()
     {
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.Disable();
         playerInput.PlayerControl.Move.canceled -= OnMove;
-        playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
+        //playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed -= OnInteract;
 
     }
@@ -94,22 +97,32 @@ public class PlayerController : MonoBehaviour
          var interactor = gameObject.GetComponent<Interactor>();
         interactor.TryInteract();
     }
+
     private void TopCameraSwitch(InputAction.CallbackContext ctx)
     {
         
-        if(!isTopView)
+        if(isTopView)
         {
-            CameraManager.Instance.ActiveSoloCamera(topCamera, false);
-            isTopView = true;   
+            CameraManager.Instance.ActiveSoloCamera(followCamera);
+            isTopView = false;
+            isFollowCamera=true;
+            CameraManager.Instance.isAlarmView = false;
         }
-        else if(isTopView)
+        else if (isFollowCamera)
         {
-            CameraManager.Instance.ActiveSoloCamera(followCamera, false);
+            CameraManager.Instance.ActiveSoloCamera(topCamera);
+            isFollowCamera = false;
+            isTopView= true;
+            CameraManager.Instance.isAlarmView = false;
         }
-        else if (CameraManager.Instance.isAlarmView ==true)
+        else if (CameraManager.Instance.isAlarmView)
         {
-            CameraManager.Instance.ActiveSoloCamera(followCamera, false);
+            CameraManager.Instance.ActiveSoloCamera(followCamera);
+            isTopView = false;
+            isFollowCamera=true;
+            CameraManager.Instance.isAlarmView =false;
         }
+     
     }
  
     public void OnLook(InputAction.CallbackContext ctx)

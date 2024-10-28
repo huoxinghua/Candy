@@ -17,10 +17,10 @@ public class CameraManager: Singleton<CameraManager>
     public bool isAlarmView;
     private void Start()
     {
-        ActiveSoloCamera(defaultCamera,false);
+        ActiveSoloCamera(defaultCamera);
         isAlarmView = false;
     }
-    public void ActiveSoloCamera(GameObject cam,bool isAlarming)
+    public void ActiveSoloCamera(GameObject cam)
     {
         foreach (var camera in virtualCameras)
         {
@@ -28,13 +28,5 @@ public class CameraManager: Singleton<CameraManager>
         }
         cam.SetActive(true);
     }
-    
-    public void AlarmCamera(GameObject cam,bool isAlarming)
-    {
-        ActiveSoloCamera(cam, true);
-        isAlarmView = true;
-    }
-
- 
 }
 

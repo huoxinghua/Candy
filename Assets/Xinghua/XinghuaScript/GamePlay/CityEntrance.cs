@@ -64,7 +64,8 @@ public class CityEntrance : MoveDoor
     public void DoorAlarm()
     {
         // Debug.Log("Door is going to open");
-        CameraManager.Instance.AlarmCamera(cameraAlarm, true);
+        CameraManager.Instance.isAlarmView = true;
+        CameraManager.Instance.ActiveSoloCamera(cameraAlarm);
         SoundManager.Instance.PlaySFX("DoorAlarm");
 }
 
