@@ -26,6 +26,7 @@ public class AIEnemy : Npc,IInteractable
     public override void Interact()
     {
         Debug.Log("player interact"+ childRenderer.material);
-       // childRenderer = gameObject.GetComponent<Renderer>();
+        //childRenderer = gameObject.GetComponent<Renderer>();
+        childRenderer.material = humanMaterial;
     }
 }
