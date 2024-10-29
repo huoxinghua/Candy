@@ -16,7 +16,7 @@ public class CityEntrance : MoveDoor
     [SerializeField] public float currentPushThreshold ;
     [SerializeField] private float damageAmount = 0.03f;
     protected float pushCount = 0;
-    [SerializeField] Image HPBar;
+    //[SerializeField] Image HPBar;
  
     private void Start()
     {
@@ -29,18 +29,15 @@ public class CityEntrance : MoveDoor
         if (other.gameObject.GetComponent<AIEnemy>())
         {
             GameManager.Instance.currentPushThreshold -= GameManager.Instance.doorDamageAmount;
-            HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentPushThreshold / GameManager.Instance.pushThreshold, 0, 1);
-            //Debug.Log("pushThresholdLost is" + currentPushThreshold);
             Interact();
         }
         enemy = other.gameObject.GetComponent<AIEnemy>();
     }
     public override void Interact()
     {
-       
         pushCount++;
-        // Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
-        if (pushCount >= 3 && pushCount <= pushThreshold)
+         Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
+        if (pushCount >= 1 && pushCount <= pushThreshold)
         {
             if (!isAlarmed)
             {
@@ -49,7 +46,7 @@ public class CityEntrance : MoveDoor
             }
         }
 
-        else if (HPBar.fillAmount <= 0)
+        else if (GameManager.Instance.currentPushThreshold <= GameManager.Instance.pushThreshold)
         {
             //DoorBeenOpened();
             StartCoroutine(MoveDoorCoroutine(targetPosition));
@@ -64,7 +61,8 @@ public class CityEntrance : MoveDoor
     public void DoorAlarm()
     {
         // Debug.Log("Door is going to open");
-        CameraManager.Instance.AlarmCamera(cameraAlarm, true);
+        CameraManager.Instance.isAlarmView = true;
+        CameraManager.Instance.ActiveSoloCamera(cameraAlarm);
         SoundManager.Instance.PlaySFX("DoorAlarm");
 }
 
