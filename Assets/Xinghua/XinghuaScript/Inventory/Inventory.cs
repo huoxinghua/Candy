@@ -67,8 +67,9 @@ public class Inventory : Singleton<Inventory>
             Debug.Log("eat candy");
             RemoveItem("Candy", 1);
             GameManager.Instance.candyEatAlready++;
+            GameManager.Instance.SpawnCandy();
         }
-       // Debug.Log("Now you have Candy" + collectedItems["Candy"]);
+        // Debug.Log("Now you have Candy" + collectedItems["Candy"]);
     }
   
 
