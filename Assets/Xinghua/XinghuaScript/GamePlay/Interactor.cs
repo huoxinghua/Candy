@@ -10,40 +10,21 @@ public class Interactor : MonoBehaviour
     private PlayerInput playerInput;
     [SerializeField] LayerMask interactableLayer;
     private bool isNearbyInteractable = false;
-    private int radius = 2;
-    private void Awake()
-    {
-        playerInput = new PlayerInput();
-    }
-    private void OnEnable()
-    {
-        playerInput.Enable();
-        playerInput.PlayerControl.Interact.performed += OnInteract;
-    }
+    [SerializeField] private int radius = 4;
+    private Collider[] colliders;
+    private float interactionCooldown = 10f; 
+    private float lastInteractionTime = 0f; 
 
-    private void OnDisable()
-    {
-     
-        playerInput.PlayerControl.Interact.canceled -= OnInteract;
-       
-    }
     private void Update()
     {
-        CheckForInteractable();
+        EnemyInteract();
     }
-    private void OnInteract(InputAction.CallbackContext ctx)
+    private bool CheckForInteractable()
     {
-        if (isNearbyInteractable)
-        {
-            TryInteract();
 
-        }
-    }
-    private void CheckForInteractable()
-    {
-        
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, interactableLayer);
+        colliders = Physics.OverlapSphere(transform.position, radius, interactableLayer);
         isNearbyInteractable = colliders.Length > 0;
+        return isNearbyInteractable;
     }
     private void OnDrawGizmos()
     {
@@ -51,28 +32,83 @@ public class Interactor : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);  // Draw a wireframe sphere at the object's position with the set radius
     }
 
-    private void TryInteract()
+
+    public void EnemyInteract()
     {
-      
-        int radius = 12;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, interactableLayer);
-       foreach (Collider collider in colliders) 
+        
+        if (!CheckForInteractable()) return;  
+
+       
+        if (Time.time - lastInteractionTime < interactionCooldown) return;
+        foreach (Collider collider in colliders)
         {
             var interactor = collider.transform.GetComponent<IInteractable>();
 
-            if (interactor != null)
+            if (collider.GetComponent<HumanNormal>())
             {
-
-                interactor.ShowKeyToInteract();
-                interactor.Interact();
-               
-                Debug.Log("find the Interactable" + interactor);
+                //transfer people
+                var humanNormal = collider.gameObject.GetComponent<HumanNormal>();
+                if (humanNormal != null)
+                {
+                    humanNormal.ChangeToEnemy();
+                }
             }
-            else
+            else if (collider.gameObject.GetComponent<CookMachine>())
             {
-                Debug.Log("not find the Interactable");
+                //cook machine damage
+                var cookMachine = collider.gameObject.GetComponent<CookMachine>();
+                cookMachine.CookMachineDamaged();
             }
+            else if (collider.gameObject.GetComponent<CandyDevourer>())
+            {
+                //boss damage
+                var candyDevourer = collider.gameObject.GetComponent<CandyDevourer>();
+                candyDevourer.CandyDevourerDamaged();
+            }
+            else if (collider.gameObject.GetComponent<CityEntrance>())
+            {
+                var cityEntrance = collider.gameObject.GetComponent<CityEntrance>();
+                cityEntrance.Interact();
+            }
+           
         }
-    }
+        lastInteractionTime = Time.time;
 
+    }
+    public void PlayerTryInteract()
+    {
+        Debug.Log("player interact");
+       
+        if (CheckForInteractable())
+        {
+            Debug.Log("player has interact");
+            foreach (Collider collider in colliders)
+            {
+                //if (collider.transform.GetComponent<AIEnemy>())
+                //{
+                //    Debug.Log(" find enemy");
+                //    var enemy = collider.transform.GetComponent<AIEnemy>();
+                //    enemy.ChangeToHuman();
+                //}
+               
+                var interactor = collider.transform.GetComponent<IInteractable>();
+                Debug.Log("interactor" + interactor);
+                if (interactor != null)
+                {
+                    interactor.Interact();
+                 
+                    Debug.Log("interactor change cloth" );
+                }
+                else
+                {
+                    Debug.Log("not find the Interactable");
+                }
+            }
+        
+       }
+
+
+    }
 }
+
+

@@ -9,33 +9,43 @@ public class CandyDevourer : MonoBehaviour,IInteractable
   //  [SerializeField] GameObject cameraView;
     private AIEnemy ememy;
     [SerializeField] Image HPBar;
+    [SerializeField] Image candyEatBar;
     private bool isDamaged;
     private void Start()
     {
-        GameManager.Instance.currentDurability = GameManager.Instance.maxDurability;
+        GameManager.Instance.bossCurrentDurability = GameManager.Instance.maxBossDurability;
         isDamaged = false;
-        GameManager.Instance.candyEnergy = 0;
-        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
+        candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
+        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
+
     }
     public void Interact()
     {
         //Countdown the candy number  
         Inventory.Instance.EatCandy();
+        
+        GameManager.Instance.currentCookDurability++;
         CheckCandyEaten();
-        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready/ GameManager.Instance.candyEatMaxAmount, 0, 1);
-        Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
-        Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
+        // this bar show in UI. if the bar is full player will win
+        candyEatBar.fillAmount = Mathf.Clamp(GameManager.Instance.candyEatAlready / GameManager.Instance.candyEatMaxAmount, 0, 1);
+        //Debug.Log("candyEatAlready is" + GameManager.Instance.candyEatAlready);
+        //Debug.Log("candyEatMaxAmount is" + GameManager.Instance.candyEatMaxAmount);
 
-
-        //increase the cityEntrance Defense Value
-
-        // CameraManager.Instance.ActiveSoloCamera(cameraView, true);
     }
     public void CandyDevourerDamaged()
     {
-        GameManager.Instance.currentDurability--;
-       
-        if (GameManager.Instance.currentDurability <= 0)
+        if (GameManager.Instance.isGameBegining && GameManager.Instance.candyEatAlready <= 0  )
+        {
+            GameManager.Instance.bossCurrentDurability--;
+            
+        }
+        else if(GameManager.Instance.isGameBegining && GameManager.Instance.candyEatAlready > 0)
+        {
+            GameManager.Instance.bossCurrentDurability -= 0.2f;
+        }
+        UIManager.Instance.ShowBossHp();
+        HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.bossCurrentDurability / GameManager.Instance.maxBossDurability, 0, 1);
+        if (GameManager.Instance.bossCurrentDurability <= 0)
         {
             Destroy(gameObject);
             GameManager.Instance.GameOver();
@@ -51,10 +61,7 @@ public class CandyDevourer : MonoBehaviour,IInteractable
     }
     public void CandyDevourerDefence()
     {
-
-    }
-    public void ShowKeyToInteract()
-    {
+        // if have candy eaten can defance
 
     }
 
