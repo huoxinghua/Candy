@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scripts : MonoBehaviour
+public class FlickerLight : MonoBehaviour
 {
-
     public Light _Light;
     public float MinTime;
     public float MaxTime;
@@ -13,7 +12,7 @@ public class Scripts : MonoBehaviour
 
     public AudioSource AS;
     public AudioClip LightAudio;
-   
+
     void Start()
     {
         Timer = Random.Range(MinTime, MaxTime);
@@ -22,10 +21,9 @@ public class Scripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FlickerLight();
+        FlickeringLight();  
     }
-
-    void FlickerLight()
+    void FlickeringLight()
     {
         if (Timer > 0)
             Timer -= Time.deltaTime;
