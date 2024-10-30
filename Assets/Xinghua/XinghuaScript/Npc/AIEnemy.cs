@@ -23,9 +23,19 @@ public class AIEnemy : Npc,IInteractable
     }
     public override void Interact()
     {
-        Debug.Log("player interact"+ childRenderer.material);
-        //childRenderer = gameObject.GetComponent<Renderer>();
-        childRenderer.material = humanMaterial;
+        
+        bool a = Inventory.Instance.collectedItems.ContainsKey("Candy");
+        bool b = Inventory.Instance.collectedItems["Candy"] >= 1;
+        Debug.Log("a and b "+ a+b);
+        if (Inventory.Instance.collectedItems.ContainsKey("Candy") && Inventory.Instance.collectedItems["Candy"] >= 1)
+        {
+            childRenderer.material = humanMaterial;
+            Inventory.Instance.RemoveItem("Candy", 1);
+        }
+        else
+        { 
+            //Show Ui you need more candy
+        }
     }
 
     public void EnemyMove(GameObject value)

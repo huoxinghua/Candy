@@ -10,10 +10,6 @@ public class Npc : MonoBehaviour,IInteractable
     [SerializeField] protected Material humanMaterial;
     [SerializeField] protected Material enemyMaterial;
     protected Material defaultMaterial;
-  //  protected NavMeshAgent agent;
-  
-   
-
     protected bool isInteracted;
     private void Start()
     {

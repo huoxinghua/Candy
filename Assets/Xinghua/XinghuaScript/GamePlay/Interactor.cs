@@ -81,23 +81,15 @@ public class Interactor : MonoBehaviour
        
         if (CheckForInteractable())
         {
-            Debug.Log("player has interact");
             foreach (Collider collider in colliders)
             {
-                //if (collider.transform.GetComponent<AIEnemy>())
-                //{
-                //    Debug.Log(" find enemy");
-                //    var enemy = collider.transform.GetComponent<AIEnemy>();
-                //    enemy.ChangeToHuman();
-                //}
-               
                 var interactor = collider.transform.GetComponent<IInteractable>();
                 Debug.Log("interactor" + interactor);
                 if (interactor != null)
                 {
                     interactor.Interact();
                  
-                    Debug.Log("interactor change cloth" );
+                    
                 }
                 else
                 {

@@ -50,7 +50,6 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     public void EnemyMove()
     {
-        Debug.Log("0"+ targetLocation[0]);
         CookMachine cookMachine = gameObject.GetComponent<CookMachine>();
 
     
