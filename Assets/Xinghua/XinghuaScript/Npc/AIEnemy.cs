@@ -10,14 +10,12 @@ public class AIEnemy : Npc,IInteractable
     private  CityEntrance cityEntrance;
     private PlayerController player;
     private AIEnemy enemy;
- 
+    public NavMeshAgent agent;
 
     private void Start()
     {
-        //set default material 
-      
-       // Debug.Log("start material" + childRenderer.material);
-        //childRenderer.material = humanMaterial;
+        agent = GetComponent<NavMeshAgent>();
+
     }
     public void ChangeToHuman()
     {
@@ -28,5 +26,12 @@ public class AIEnemy : Npc,IInteractable
         Debug.Log("player interact"+ childRenderer.material);
         //childRenderer = gameObject.GetComponent<Renderer>();
         childRenderer.material = humanMaterial;
+    }
+
+    public void EnemyMove(GameObject value)
+    {
+        //value = GameObject.Find("CookMachine");
+        agent.SetDestination(value.transform.position);
+   
     }
 }

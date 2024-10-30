@@ -11,6 +11,7 @@ public class CookMachine : MonoBehaviour,IInteractable
     [SerializeField] private float maxDurability = 2f;
     [SerializeField] private float currentDurability;
     [SerializeField] Image HPBar;
+    public bool isMachineDestroyed;
     private void Start()
     {
         currentDurability = maxDurability;
@@ -32,7 +33,9 @@ public class CookMachine : MonoBehaviour,IInteractable
         {
             UIManager.Instance.hpBarMachine.SetActive(false);
             Destroy(gameObject);
+            isMachineDestroyed = true;  
         } 
+        
     }
     private void OnTriggerEnter(Collider other)
     {

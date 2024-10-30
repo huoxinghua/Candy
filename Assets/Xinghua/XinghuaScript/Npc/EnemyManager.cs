@@ -11,9 +11,9 @@ public class EnemyManager : Singleton<EnemyManager>
     private GameObject enemy;
     [SerializeField] private Transform[] spawnLocation;
     private float spawnRadius;
-    [SerializeField] private GameObject targetLocation;
+    [SerializeField] public GameObject[] targetLocation;
     [SerializeField] private float spawnInterval = 5f;
-    private AIEnemy enemyScript;
+    public AIEnemy enemyScript;
 
 
     
@@ -21,21 +21,25 @@ public class EnemyManager : Singleton<EnemyManager>
     private bool isSpawned = false;
     private bool isNeedSpawning = true;
     [SerializeField] private Renderer childRenderer;
+    private void Start()
+    {
+       
+    }
     private void SpawnEnemy()
     {
         if (isNeedSpawning)
         {
-            //if (spawnLocation.Length == 0)
-            //{
-            //    Debug.LogError("No spawn locations available!");
-            //    return;
-            //}
+            if (spawnLocation.Length == 0)
+            {
+                Debug.LogError("No spawn locations available!");
+                return;
+            }
             int randomIndex = Random.Range(0, spawnLocation.Length);
             Vector3 randomOffset = new Vector3(
             Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius) );
 
             enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position + randomOffset, Quaternion.identity);
-            enemyScript = enemy.AddComponent<AIEnemy>();    
+            enemyScript = enemy.GetComponent<AIEnemy>();    
             isSpawned = true;
         }
         
@@ -44,15 +48,20 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         isNeedSpawning = false;
     }
-    private void EnemyMove()
+    public void EnemyMove()
     {
-        //Debug.Log("enemyScript"+ enemyScript);
-        //Debug.Log("targetLocation" + targetLocation);
-        if (targetLocation != null)
-        {
+        Debug.Log("0"+ targetLocation[0]);
+        CookMachine cookMachine = gameObject.GetComponent<CookMachine>();
 
-            enemyScript.SetTarget(targetLocation);
-           // Debug.Log("targetLocation" + targetLocation);
+    
+        for (int i = 0; i < targetLocation.Length; i++)
+        {
+            if (targetLocation[i] == null)
+            {
+                continue;
+            }
+            enemyScript.EnemyMove(targetLocation[i]);
+           
         }
     }
 
@@ -67,9 +76,7 @@ public class EnemyManager : Singleton<EnemyManager>
         else if (enemyScript !=null)
         {
             EnemyMove();
-        }
-       
-            
+        }       
     }
     public void Interact()
     {

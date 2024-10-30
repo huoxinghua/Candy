@@ -107,7 +107,9 @@ MonoBehaviour:
   childRenderer: {fileID: 4353607880523244055}
   humanMaterial: {fileID: 2100000, guid: 8d42dcd5a75343243ae097a1e9c52dcc, type: 2}
   enemyMaterial: {fileID: 2100000, guid: f1bd483dbc69eb046a60019466146bff, type: 2}
-  target: {fileID: 0}
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!195 &4160103717217696156
 NavMeshAgent:
   m_ObjectHideFlags: 0

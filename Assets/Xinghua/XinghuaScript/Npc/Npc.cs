@@ -10,14 +10,14 @@ public class Npc : MonoBehaviour,IInteractable
     [SerializeField] protected Material humanMaterial;
     [SerializeField] protected Material enemyMaterial;
     protected Material defaultMaterial;
-    protected NavMeshAgent agent;
-    [SerializeField] protected GameObject target;
-    Rigidbody rb;
+  //  protected NavMeshAgent agent;
+  
+   
 
     protected bool isInteracted;
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+       // agent = GetComponent<NavMeshAgent>();
         childRenderer = GetComponent<Renderer>();
         childRenderer.material = defaultMaterial;
      
@@ -29,18 +29,15 @@ public class Npc : MonoBehaviour,IInteractable
     {
         isInteracted = newInteractValue;
     }
+
     public void SetMaterial(Material material)
     {
 
         childRenderer = gameObject.GetComponent<Renderer>();
         childRenderer.material = material;
     }
-    public void SetTarget(GameObject newTarget)
-    {
-        target = newTarget;
-        NpcMove();
 
-    }
+  
   
     public void ShowKeyToInteract()
     {
@@ -55,20 +52,5 @@ public class Npc : MonoBehaviour,IInteractable
            // Debug.Log("change npc look");
     }
 
-    public void NpcMove()
-    {
-      
-        agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-
-        if (target != null)
-        {
-            agent.SetDestination(target.transform.position);
-            //agent.stoppingDistance = 0.2f;
-        }
-        else
-        {
-            Debug.LogError("no target");
-        }
-    }
+    
 }
