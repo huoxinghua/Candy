@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 Apple with 1 Banane to cook Candy
+  m_text: "2 Apple with 1 Banane \nE to cook Candy"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5304,7 +5304,7 @@ Transform:
   m_GameObject: {fileID: 395666914}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.314012, y: -53, z: -2.26}
+  m_LocalPosition: {x: -9.314012, y: -53.475, z: -2.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10662,7 +10662,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.56, y: 3.95, z: 30.910002}
+  m_LocalPosition: {x: -12.56, y: 2.94, z: 30.910002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13067,7 +13067,7 @@ Transform:
   m_GameObject: {fileID: 1524992758}
   serializedVersion: 2
   m_LocalRotation: {x: -0.088939056, y: 0, z: -0, w: 0.9960371}
-  m_LocalPosition: {x: -18.26, y: 4.5082865, z: 45.02354}
+  m_LocalPosition: {x: -18.26, y: 3.5142655, z: 45.202484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17211,7 +17211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224495091949572861, guid: 4d3150265206f164d9db5a19ffdcb396, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.62
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 8224495091949572861, guid: 4d3150265206f164d9db5a19ffdcb396, type: 3}
       propertyPath: m_LocalPosition.z

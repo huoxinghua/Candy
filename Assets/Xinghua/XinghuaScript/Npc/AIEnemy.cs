@@ -41,7 +41,7 @@ public class AIEnemy : Npc,IInteractable
         }
         else
         { 
-            UIManager.Instance.candyHealPeople.SetActive(true);
+            UIManager.Instance.ShowCandyHealUI();
             StartCoroutine(HideCandyHealPeopleAfterDelay());
             //Show Ui you need more candy
         }

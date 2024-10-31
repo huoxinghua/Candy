@@ -57,9 +57,14 @@ public class CookMachine : MonoBehaviour,IInteractable
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<HumanNormal>())
+        if (other.gameObject.GetComponent<HumanNormal>())
         {
             maxDurability++;
+        }
+        else if (other.gameObject.GetComponent<PlayerController>())
+        {
+            UIManager.Instance.CookMachineUI.SetActive(true);
+            StartCoroutine(HideCookMachineUIAfterDelay());
         }
     }
    
