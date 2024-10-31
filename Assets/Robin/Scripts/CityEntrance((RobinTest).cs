@@ -50,7 +50,7 @@ public class Gate : MonoBehaviour
     public void DoorAlarm()
     {
         // Debug.Log("Door is going to open");
-        CameraManager.Instance.AlarmCamera(cameraAlarm, true);
+        //CameraManager.Instance.AlarmCamera(cameraAlarm);
     }
 
     private void DoorBeenOpened()

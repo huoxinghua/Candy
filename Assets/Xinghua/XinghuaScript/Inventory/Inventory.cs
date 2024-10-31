@@ -31,7 +31,7 @@ public class Inventory : Singleton<Inventory>
         //Debug.Log($"Added {value} {itemName}. Now you have {collectedItems[itemName]} {itemName}");
         
     }
-    private void RemoveItem(string itemName,int value) 
+    public void RemoveItem(string itemName,int value) 
     {
         if (collectedItems.ContainsKey(itemName) && collectedItems[itemName] >= value)
         {
@@ -67,8 +67,9 @@ public class Inventory : Singleton<Inventory>
             Debug.Log("eat candy");
             RemoveItem("Candy", 1);
             GameManager.Instance.candyEatAlready++;
+            GameManager.Instance.SpawnCandy();
         }
-       // Debug.Log("Now you have Candy" + collectedItems["Candy"]);
+        // Debug.Log("Now you have Candy" + collectedItems["Candy"]);
     }
   
 

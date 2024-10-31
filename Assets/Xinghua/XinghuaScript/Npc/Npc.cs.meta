@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 507377bdb899b35478a8c23324906a2f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - childRenderer: {instanceID: 0}
+  - humanMaterial123: {fileID: 2100000, guid: 8d42dcd5a75343243ae097a1e9c52dcc, type: 2}
+  - enemyMaterial: {fileID: 2100000, guid: f1bd483dbc69eb046a60019466146bff, type: 2}
+  - target: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
