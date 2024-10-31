@@ -148,8 +148,9 @@ MonoBehaviour:
   childRenderer: {fileID: 224403367490909151}
   humanMaterial: {fileID: 2100000, guid: 8d42dcd5a75343243ae097a1e9c52dcc, type: 2}
   enemyMaterial: {fileID: 2100000, guid: f1bd483dbc69eb046a60019466146bff, type: 2}
-  target: {fileID: 0}
   newTarget: {fileID: 0}
+  targets: []
+  agent: {fileID: 0}
 --- !u!65 &5986111869030968661
 BoxCollider:
   m_ObjectHideFlags: 0

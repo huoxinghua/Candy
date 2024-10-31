@@ -26,16 +26,25 @@ public class AIEnemy : Npc,IInteractable
         
         bool a = Inventory.Instance.collectedItems.ContainsKey("Candy");
         bool b = Inventory.Instance.collectedItems["Candy"] >= 1;
+        HumanNormal human = gameObject.GetComponent<HumanNormal>();
         Debug.Log("a and b "+ a+b);
-        if (Inventory.Instance.collectedItems.ContainsKey("Candy") && Inventory.Instance.collectedItems["Candy"] >= 1)
+        if (Inventory.Instance.collectedItems.ContainsKey("Candy") && Inventory.Instance.collectedItems["Candy"] >= 1 )
         {
             childRenderer.material = humanMaterial;
             Inventory.Instance.RemoveItem("Candy", 1);
         }
         else
         { 
+            UIManager.Instance.candyHealPeople.SetActive(true);
+            StartCoroutine(HideCandyHealPeopleAfterDelay());
             //Show Ui you need more candy
         }
+    }
+
+    private IEnumerator HideCandyHealPeopleAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        UIManager.Instance.candyHealPeople.SetActive(false);
     }
 
     public void EnemyMove(GameObject value)

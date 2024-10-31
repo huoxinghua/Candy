@@ -88,8 +88,6 @@ public class Interactor : MonoBehaviour
                 if (interactor != null)
                 {
                     interactor.Interact();
-                 
-                    
                 }
                 else
                 {

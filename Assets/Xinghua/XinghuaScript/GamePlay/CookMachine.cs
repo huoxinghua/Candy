@@ -27,10 +27,21 @@ public class CookMachine : MonoBehaviour,IInteractable
     }
     public void Interact()
     {
+        UIManager.Instance.CookMachineUI.SetActive(true);
         //Countdown the candy number 
         Inventory.Instance.CookCandy();
         //HPBar.fillAmount = Mathf.Clamp(GameManager.Instance.currentCookDurability / GameManager.Instance.maxCookDurability, 0, 1);
-       
+        StartCoroutine(HideCookMachineUIAfterDelay());
+    }
+
+
+    private IEnumerator HideCookMachineUIAfterDelay()
+    {
+        //2s
+        yield return new WaitForSeconds(2f);
+
+        // hide CookMachineUI
+        UIManager.Instance.CookMachineUI.SetActive(false);
     }
     public void CookMachineDamaged()
     {
@@ -51,10 +62,7 @@ public class CookMachine : MonoBehaviour,IInteractable
             maxDurability++;
         }
     }
-    public void  ShowKeyToInteract()
-    {
-        // UI manager to show
-    }
+   
 
 
 }

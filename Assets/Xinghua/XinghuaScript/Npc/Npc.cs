@@ -13,7 +13,7 @@ public class Npc : MonoBehaviour,IInteractable
     protected bool isInteracted;
     private void Start()
     {
-       // agent = GetComponent<NavMeshAgent>();
+       
         childRenderer = GetComponent<Renderer>();
         childRenderer.material = defaultMaterial;
      

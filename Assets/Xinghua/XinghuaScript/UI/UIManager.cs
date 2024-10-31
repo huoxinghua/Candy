@@ -11,6 +11,8 @@ public class UIManager : Singleton<UIManager>
     [Header("cookmachine Hp in world space")]
     [SerializeField] private GameObject hpBarMachineFill;
     [SerializeField] public GameObject hpBarMachine;
+    [SerializeField] public GameObject candyHealPeople;
+    [SerializeField] public GameObject CookMachineUI;
 
     [Header("screen")]
     [SerializeField] TMP_Text timer;
@@ -23,13 +25,15 @@ public class UIManager : Singleton<UIManager>
         hpBar.SetActive(false);
         timerUI.SetActive(true);
         timerIsRunning = true;
+        candyHealPeople.SetActive(false);
+        CookMachineUI.SetActive(false);
     }
     public void ShowBossHp()
     {
         
        hpBar.SetActive(true);
     }
- 
+
 
 
     void Update()
