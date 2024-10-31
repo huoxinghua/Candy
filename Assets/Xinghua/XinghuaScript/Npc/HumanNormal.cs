@@ -14,9 +14,8 @@ public class HumanNormal : Npc,IInteractable
     {
         // the render is for the human be changed by zombin and can also changed back by King
         childRenderer.material = humanMaterial;
-        npc = gameObject.GetComponent<Npc>();
+      //  npc = gameObject.GetComponent<Npc>();
         agent = GetComponent<NavMeshAgent>();
-        // HunmanMove();
     }
 
     public void ChangeToHuman()
@@ -32,7 +31,6 @@ public class HumanNormal : Npc,IInteractable
         {
             var enemyscript = this.gameObject.AddComponent<AIEnemy>();
             enemyscript.GetComponent<Renderer>();
-           // Debug.Log("render" + enemyscript.GetComponent<Renderer>());
             childRenderer.material = enemyMaterial;
         }
         
@@ -45,9 +43,7 @@ public class HumanNormal : Npc,IInteractable
     }
     public void HumanMove()
     {
-
         agent = GetComponent<NavMeshAgent>();
-
 
         if (targets != null && targets.Length > 0)
         {
@@ -56,7 +52,6 @@ public class HumanNormal : Npc,IInteractable
         }
         else
         {
-
             Debug.LogError("no target");
         }
     }

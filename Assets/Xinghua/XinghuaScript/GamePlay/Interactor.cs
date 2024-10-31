@@ -15,7 +15,7 @@ public class Interactor : MonoBehaviour
     private float interactionCooldown = 10f; 
     private float lastInteractionTime = 0f; 
 
-    private void Update()
+    private void FixedUpdate()
     {
         EnemyInteract();
     }
@@ -44,16 +44,7 @@ public class Interactor : MonoBehaviour
         {
             var interactor = collider.transform.GetComponent<IInteractable>();
 
-            if (collider.GetComponent<HumanNormal>())
-            {
-                //transfer people
-                var humanNormal = collider.gameObject.GetComponent<HumanNormal>();
-                if (humanNormal != null)
-                {
-                    humanNormal.ChangeToEnemy();
-                }
-            }
-            else if (collider.gameObject.GetComponent<CookMachine>())
+            if (collider.gameObject.GetComponent<CookMachine>())
             {
                 //cook machine damage
                 var cookMachine = collider.gameObject.GetComponent<CookMachine>();
@@ -78,16 +69,19 @@ public class Interactor : MonoBehaviour
     public void PlayerTryInteract()
     {
         Debug.Log("player interact");
+      
+
        
         if (CheckForInteractable())
         {
             foreach (Collider collider in colliders)
             {
+                if (collider.gameObject.GetComponent<HumanNormal>()) return;
                 var interactor = collider.transform.GetComponent<IInteractable>();
                 Debug.Log("interactor" + interactor);
-                if (interactor != null)
+                if (interactor != null && !collider.gameObject.GetComponentInChildren<HumanNormal>())
                 {
-                    interactor.Interact();
+                     interactor.Interact();
                 }
                 else
                 {

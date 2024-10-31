@@ -11,10 +11,12 @@ public class AIEnemy : Npc,IInteractable
     private PlayerController player;
     private AIEnemy enemy;
     public NavMeshAgent agent;
+    private Animator animator;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
     }
     public void ChangeToHuman()
@@ -23,7 +25,7 @@ public class AIEnemy : Npc,IInteractable
     }
     public override void Interact()
     {
-        
+        //the is for player interact. player can use candy to change enemy back to human
         bool a = Inventory.Instance.collectedItems.ContainsKey("Candy");
         bool b = Inventory.Instance.collectedItems["Candy"] >= 1;
         HumanNormal human = gameObject.GetComponent<HumanNormal>();

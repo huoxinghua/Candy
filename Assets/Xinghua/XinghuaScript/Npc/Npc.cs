@@ -33,8 +33,6 @@ public class Npc : MonoBehaviour,IInteractable
         childRenderer.material = material;
     }
 
-  
-  
     public void ShowKeyToInteract()
     {
 
