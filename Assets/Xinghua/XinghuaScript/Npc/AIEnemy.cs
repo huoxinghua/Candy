@@ -55,8 +55,9 @@ public class AIEnemy : Npc,IInteractable
 
     public void EnemyMove(GameObject value)
     {
+        Debug.Log("Move enemy");
         //value = GameObject.Find("CookMachine");
         agent.SetDestination(value.transform.position);
-   
+
     }
 }

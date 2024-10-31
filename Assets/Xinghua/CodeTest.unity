@@ -12029,7 +12029,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4881480141024262708, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: m_Name
-      value: CookMachine (1)
+      value: CookMachine1
       objectReference: {fileID: 0}
     - target: {fileID: 6195001791774750138, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16845,9 +16845,13 @@ MonoBehaviour:
   enemyPerfab: {fileID: 7072618733174613065, guid: 18aa45a67a30e3840bdf56fb7025288e, type: 3}
   spawnLocation:
   - {fileID: 2072988272}
-  targetLocation:
-  - {fileID: 1252484050}
+  cookMachine1: {fileID: 967030513}
+  cookMachine2: {fileID: 1252484050}
+  boss: {fileID: 1058996261510617530}
+  cookMachines:
   - {fileID: 967030513}
+  - {fileID: 1252484050}
+  - {fileID: 1058996261510617530}
   spawnInterval: 5
   enemyScript: {fileID: 0}
   childRenderer: {fileID: 0}
@@ -16889,7 +16893,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4881480141024262708, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: m_Name
-      value: CookMachine
+      value: CookMachine2
       objectReference: {fileID: 0}
     - target: {fileID: 6195001791774750138, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: m_LocalPosition.x
