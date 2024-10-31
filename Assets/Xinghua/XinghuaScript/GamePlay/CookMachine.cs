@@ -10,20 +10,21 @@ public class CookMachine : MonoBehaviour,IInteractable
     private AIEnemy ememy;
     [SerializeField] private float maxDurability = 2f;
     [SerializeField] private float currentDurability;
+    [SerializeField] private GameObject rotatePart;
     [SerializeField] Image HPBar;
     public bool isMachineDestroyed;
 
     
-    public float rotationSpeed = 100f;
+    public float rotationSpeed = 50f;
 
     private void Start()
     {
         currentDurability = maxDurability;
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        rotatePart.transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
     }
     public void Interact()
     {
