@@ -12,11 +12,18 @@ public class CookMachine : MonoBehaviour,IInteractable
     [SerializeField] private float currentDurability;
     [SerializeField] Image HPBar;
     public bool isMachineDestroyed;
+
+    
+    public float rotationSpeed = 100f;
+
     private void Start()
     {
         currentDurability = maxDurability;
-        
-        
+    }
+    
+    private void Update()
+    {
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
     public void Interact()
     {
