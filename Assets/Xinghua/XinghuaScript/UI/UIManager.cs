@@ -13,6 +13,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] public GameObject hpBarMachine;
     [SerializeField] public GameObject candyHealPeople;
     [SerializeField] public GameObject CookMachineUI;
+    [SerializeField] public GameObject LostUI;
     private bool isCookMachineUIShow;
 
     [Header("screen")]
@@ -28,6 +29,7 @@ public class UIManager : Singleton<UIManager>
         timerIsRunning = true;
         candyHealPeople.SetActive(false);
         CookMachineUI.SetActive(false);
+        LostUI.SetActive(false);
         isCookMachineUIShow = false;
     }
     public void ShowBossHp()

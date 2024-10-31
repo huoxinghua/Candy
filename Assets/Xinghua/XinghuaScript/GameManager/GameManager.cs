@@ -54,6 +54,8 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game over");
         Time.timeScale = 0f;
         UIManager.Instance.timeRemaining = 0;
+        UIManager.Instance.LostUI.SetActive(true);
+
     }
     public void WinGame()
     {

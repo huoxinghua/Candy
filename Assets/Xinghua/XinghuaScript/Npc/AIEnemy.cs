@@ -50,10 +50,12 @@ public class AIEnemy : Npc,IInteractable
         {
             Destroy(this);
             this.gameObject.AddComponent<HumanNormal>();
-            childRenderer.material = humanMaterial;
+            if(childRenderer.material != null)
+            {
+                childRenderer.material = humanMaterial;
+            }
+            
             animator.SetBool("isHumanChanged", true);
-
-
             Inventory.Instance.RemoveItem("Candy", 1);
         }
         else
