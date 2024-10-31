@@ -31,7 +31,7 @@ public class Inventory : Singleton<Inventory>
         //Debug.Log($"Added {value} {itemName}. Now you have {collectedItems[itemName]} {itemName}");
         
     }
-    private void RemoveItem(string itemName,int value) 
+    public void RemoveItem(string itemName,int value) 
     {
         if (collectedItems.ContainsKey(itemName) && collectedItems[itemName] >= value)
         {

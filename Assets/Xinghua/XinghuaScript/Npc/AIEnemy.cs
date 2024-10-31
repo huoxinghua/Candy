@@ -10,14 +10,17 @@ public class AIEnemy : Npc,IInteractable
     private  CityEntrance cityEntrance;
     private PlayerController player;
     private AIEnemy enemy;
- 
+    public NavMeshAgent agent;
+    private Animator animator;
 
     private void Start()
     {
-        //set default material 
-      
-       // Debug.Log("start material" + childRenderer.material);
-        //childRenderer.material = humanMaterial;
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        Debug.Log("Animator is" + animator);
+       // animator.SetBool("isHumanChanged", true);
+
+
     }
     public void ChangeToHuman()
     {
@@ -25,8 +28,36 @@ public class AIEnemy : Npc,IInteractable
     }
     public override void Interact()
     {
-        Debug.Log("player interact"+ childRenderer.material);
-        //childRenderer = gameObject.GetComponent<Renderer>();
-        childRenderer.material = humanMaterial;
+        //the is for player interact. player can use candy to change enemy back to human
+        if (Inventory.Instance.collectedItems.ContainsKey("Candy") && Inventory.Instance.collectedItems["Candy"] >= 1 )
+        {
+            Destroy(this);
+            this.gameObject.AddComponent<HumanNormal>();
+            childRenderer.material = humanMaterial;
+            animator.SetBool("isHumanChanged", true);
+
+
+            Inventory.Instance.RemoveItem("Candy", 1);
+        }
+        else
+        { 
+            UIManager.Instance.ShowCandyHealUI();
+            StartCoroutine(HideCandyHealPeopleAfterDelay());
+            //Show Ui you need more candy
+        }
+    }
+
+    private IEnumerator HideCandyHealPeopleAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        UIManager.Instance.candyHealPeople.SetActive(false);
+    }
+
+    public void EnemyMove(GameObject value)
+    {
+        Debug.Log("Move enemy");
+        //value = GameObject.Find("CookMachine");
+        agent.SetDestination(value.transform.position);
+
     }
 }

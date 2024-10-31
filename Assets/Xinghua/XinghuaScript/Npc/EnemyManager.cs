@@ -11,9 +11,14 @@ public class EnemyManager : Singleton<EnemyManager>
     private GameObject enemy;
     [SerializeField] private Transform[] spawnLocation;
     private float spawnRadius;
-    [SerializeField] private GameObject targetLocation;
+    [SerializeField] public GameObject cookMachine1;
+    [SerializeField] public GameObject cookMachine2;
+    [SerializeField] public GameObject boss;
+
+    [SerializeField] private List<GameObject> cookMachines;
+    private int currentTargetIndex = 0;
     [SerializeField] private float spawnInterval = 5f;
-    private AIEnemy enemyScript;
+    public AIEnemy enemyScript;
 
 
     
@@ -21,21 +26,30 @@ public class EnemyManager : Singleton<EnemyManager>
     private bool isSpawned = false;
     private bool isNeedSpawning = true;
     [SerializeField] private Renderer childRenderer;
+    private void Start()
+    {
+        cookMachines = new List<GameObject>();
+        cookMachines.Add(cookMachine1);
+        cookMachines.Add(cookMachine2);
+        cookMachines.Add(boss);
+        //  EnemyMove();
+        SetNextTargrt();
+    }
     private void SpawnEnemy()
     {
         if (isNeedSpawning)
         {
-            //if (spawnLocation.Length == 0)
-            //{
-            //    Debug.LogError("No spawn locations available!");
-            //    return;
-            //}
+            if (spawnLocation.Length == 0)
+            {
+                Debug.LogError("No spawn locations available!");
+                return;
+            }
             int randomIndex = Random.Range(0, spawnLocation.Length);
             Vector3 randomOffset = new Vector3(
             Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius) );
 
             enemy = Instantiate(enemyPerfab, spawnLocation[randomIndex].position + randomOffset, Quaternion.identity);
-            enemyScript = enemy.AddComponent<AIEnemy>();    
+            enemyScript = enemy.GetComponent<AIEnemy>();    
             isSpawned = true;
         }
         
@@ -44,21 +58,42 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         isNeedSpawning = false;
     }
-    private void EnemyMove()
+    public void EnemyMove()
     {
-        //Debug.Log("enemyScript"+ enemyScript);
-        //Debug.Log("targetLocation" + targetLocation);
-        if (targetLocation != null)
-        {
+        CookMachine cookMachine = gameObject.GetComponent<CookMachine>();
 
-            enemyScript.SetTarget(targetLocation);
-           // Debug.Log("targetLocation" + targetLocation);
+    
+        //for (int i = 0; i < targetLocation.Length; i++)
+        //{
+        //    if (targetLocation[i] == null)
+        //    {
+        //        continue;
+        //    }
+        //    enemyScript.EnemyMove(targetLocation[i]);
+           
+        //}
+    }
+    private void SetNextTargrt()
+    {
+
+        while (currentTargetIndex < cookMachines.Count && cookMachines[currentTargetIndex].IsDestroyed())
+        {
+            currentTargetIndex++;
         }
+        
+        Debug.Log("enemyScript" +enemyScript);
+        if (enemyScript != null)
+        {
+            enemyScript.EnemyMove(cookMachines[currentTargetIndex]);
+        }
+        
+        Debug.Log(cookMachines[currentTargetIndex]);
     }
 
-    private void Update()
+
+    private void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
         if (timer >= spawnInterval)
         {
             SpawnEnemy();  
@@ -66,10 +101,9 @@ public class EnemyManager : Singleton<EnemyManager>
         }
         else if (enemyScript !=null)
         {
-            EnemyMove();
-        }
-       
-            
+            //EnemyMove();
+            SetNextTargrt();
+        }       
     }
     public void Interact()
     {

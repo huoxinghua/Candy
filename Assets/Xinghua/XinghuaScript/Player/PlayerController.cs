@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpHeight;
     bool isGrounded;
-    [SerializeField] private float sensitivityX = 1f;  
-    [SerializeField] private float sensitivityY = 1f;  
+   //[SerializeField] private float sensitivityX = 1f;  
+   // [SerializeField] private float sensitivityY = 1f;  
     private bool isTopView;
    // [SerializeField] LayerMask interactableLayer;
     private Animator animator;
