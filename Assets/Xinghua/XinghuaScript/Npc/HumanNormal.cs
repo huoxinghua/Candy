@@ -13,7 +13,7 @@ public class HumanNormal : Npc,IInteractable
     private void Start()
     {
         // the render is for the human be changed by zombin and can also changed back by King
-        childRenderer.material = humanMaterial;
+       // childRenderer.material = humanMaterial;
       //  npc = gameObject.GetComponent<Npc>();
         agent = GetComponent<NavMeshAgent>();
     }
