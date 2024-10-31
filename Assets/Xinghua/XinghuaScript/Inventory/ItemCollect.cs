@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class ItemCollect : MonoBehaviour
 {
-    public UnityEvent CameraTrigger;
     protected string  itemName;
    
     private void OnTriggerEnter(Collider other)
@@ -14,6 +13,7 @@ public class ItemCollect : MonoBehaviour
         {
             gameObject.SetActive(false);
             //add collect sound here
+            SoundManager.Instance.PlaySFX("PickUp");
            
            if (GameManager.Instance != null)
             {
@@ -23,7 +23,7 @@ public class ItemCollect : MonoBehaviour
             {
                 Debug.LogError("GameManager.Instance is null! GameManager is not initialized.");
             }
-           // CameraTrigger?.Invoke();
+
         }
     }
 
