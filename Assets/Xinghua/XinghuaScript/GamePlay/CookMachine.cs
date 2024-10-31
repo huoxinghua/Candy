@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,10 @@ public class CookMachine : MonoBehaviour,IInteractable
     [SerializeField] private GameObject rotatePart;
     [SerializeField] Image HPBar;
     public bool isMachineDestroyed;
+    public int destroyCount;
+    public static event Action<CookMachine> onCookMachineDestroyed;
+    public static event Action onCookMachineAllDestroyed;
 
-    
     public float rotationSpeed = 50f;
 
     private void Start()
@@ -51,9 +54,22 @@ public class CookMachine : MonoBehaviour,IInteractable
         if (currentDurability <= 0)
         {
             UIManager.Instance.hpBarMachine.SetActive(false);
+            onCookMachineDestroyed?.Invoke(this);
             Destroy(gameObject);
-            isMachineDestroyed = true;  
-        } 
+            Debug.Log("onCookMachineDestroyed is invoke");
+            isMachineDestroyed = true;
+            destroyCount++;
+        }
+        if (destroyCount == 2)
+        {
+            CookMachineAllDamaged();
+        }
+    }
+    public void CookMachineAllDamaged()
+    {
+       
+            Debug.Log("boss next");
+            onCookMachineAllDestroyed?.Invoke();
         
     }
     private void OnTriggerEnter(Collider other)
