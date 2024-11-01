@@ -35,6 +35,7 @@ public class CityEntrance : MoveDoor
     }
     public override void Interact()
     {
+        
         pushCount++;
          Debug.Log($"enemy is pushing the door. Push count: {pushCount}");
         if (pushCount >= 1 && pushCount <= pushThreshold)

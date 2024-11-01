@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class ItemCollect : MonoBehaviour
 {
-    public UnityEvent CameraTrigger;
     protected string  itemName;
     
 
@@ -27,7 +26,7 @@ public class ItemCollect : MonoBehaviour
             {
                 Debug.LogError("GameManager.Instance is null! GameManager is not initialized.");
             }
-           // CameraTrigger?.Invoke();
+
         }
 
     }

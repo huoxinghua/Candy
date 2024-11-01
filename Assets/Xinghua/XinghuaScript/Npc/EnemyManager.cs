@@ -15,8 +15,8 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] public GameObject cookMachine2;
     [SerializeField] public GameObject boss;
 
-    [SerializeField] private List<GameObject> cookMachines;
-    private int currentTargetIndex = 0;
+    public List<GameObject> cookMachines;
+    public int currentTargetIndex = 0;
     [SerializeField] private float spawnInterval = 5f;
     public AIEnemy enemyScript;
 
@@ -32,8 +32,10 @@ public class EnemyManager : Singleton<EnemyManager>
         cookMachines.Add(cookMachine1);
         cookMachines.Add(cookMachine2);
         cookMachines.Add(boss);
-        //  EnemyMove();
-        SetNextTargrt();
+        //CookMachine cookMachine = gameObject.GetComponent<CookMachine>();
+        CookMachine.onCookMachineAllDestroyed += AllCookMachineDestroyed;
+        CookMachine.onCookMachineDestroyed += OnCookMachineDestroyed;
+        
     }
     private void SpawnEnemy()
     {
@@ -54,26 +56,35 @@ public class EnemyManager : Singleton<EnemyManager>
         }
         
     }
+    private void OnCookMachineDestroyed(CookMachine destroyedCookMachine)
+    {
+        //Debug.Log("enemyManager OnCookmachine destroyed");
+        if (cookMachines[currentTargetIndex] !=null && cookMachines[currentTargetIndex]== destroyedCookMachine)
+        {
+            SetNextTargrt();
+           // Debug.Log("enemyManager OnCookmachine destroyed set next target");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        CookMachine.onCookMachineDestroyed -= OnCookMachineDestroyed;
+    }
+
+    public void AllCookMachineDestroyed()
+    {
+        if (!enemyScript)
+        {
+            enemyScript.EnemyMove(EnemyManager.Instance.boss);
+        }
+    }
+
     public void StopSpawnEnemy()
     {
         isNeedSpawning = false;
     }
-    public void EnemyMove()
-    {
-        CookMachine cookMachine = gameObject.GetComponent<CookMachine>();
-
-    
-        //for (int i = 0; i < targetLocation.Length; i++)
-        //{
-        //    if (targetLocation[i] == null)
-        //    {
-        //        continue;
-        //    }
-        //    enemyScript.EnemyMove(targetLocation[i]);
-           
-        //}
-    }
-    private void SetNextTargrt()
+ 
+    public void SetNextTargrt()
     {
 
         while (currentTargetIndex < cookMachines.Count && cookMachines[currentTargetIndex].IsDestroyed())
@@ -81,13 +92,13 @@ public class EnemyManager : Singleton<EnemyManager>
             currentTargetIndex++;
         }
         
-        Debug.Log("enemyScript" +enemyScript);
+        //Debug.Log("enemyScript" +enemyScript);
         if (enemyScript != null)
         {
             enemyScript.EnemyMove(cookMachines[currentTargetIndex]);
         }
         
-        Debug.Log(cookMachines[currentTargetIndex]);
+        //Debug.Log(cookMachines[currentTargetIndex]);
     }
 
 
@@ -101,7 +112,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
         else if (enemyScript !=null)
         {
-            //EnemyMove();
+       
             SetNextTargrt();
         }       
     }
