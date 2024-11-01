@@ -12,15 +12,32 @@ public class AIEnemy : Npc,IInteractable
     private AIEnemy enemy;
     public NavMeshAgent agent;
     private Animator animator;
+    [SerializeField] GameObject cookMachine2;
 
+    private CookMachine cookMachine1Component;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        Debug.Log("Animator is" + animator);
-       // animator.SetBool("isHumanChanged", true);
+        // Debug.Log("Animator is" + animator);
+        // animator.SetBool("isHumanChanged", true);
+        CookMachine.onCookMachineDestroyed += OnCookMachineDestroyed;
+        CookMachine.onCookMachineAllDestroyed += AllCookMachineDestroyed;
+    }
 
+    private void OnCookMachineDestroyed(CookMachine destroyedCookMachine)
+    {
+        EnemyMove(EnemyManager.Instance.cookMachine2);
+    }
+    public void AllCookMachineDestroyed()
+    {
 
+        EnemyMove(EnemyManager.Instance.boss);
+    }
+
+    private void OnDestroy()
+    {
+        CookMachine.onCookMachineDestroyed -= OnCookMachineDestroyed;
     }
     public void ChangeToHuman()
     {
@@ -33,10 +50,12 @@ public class AIEnemy : Npc,IInteractable
         {
             Destroy(this);
             this.gameObject.AddComponent<HumanNormal>();
-            childRenderer.material = humanMaterial;
+            if(childRenderer.material != null)
+            {
+                childRenderer.material = humanMaterial;
+            }
+            
             animator.SetBool("isHumanChanged", true);
-
-
             Inventory.Instance.RemoveItem("Candy", 1);
         }
         else
@@ -55,7 +74,7 @@ public class AIEnemy : Npc,IInteractable
 
     public void EnemyMove(GameObject value)
     {
-        Debug.Log("Move enemy");
+        //Debug.Log("Move enemy");
         //value = GameObject.Find("CookMachine");
         agent.SetDestination(value.transform.position);
 

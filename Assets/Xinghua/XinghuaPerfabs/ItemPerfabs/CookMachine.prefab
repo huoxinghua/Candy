@@ -124,9 +124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraView: {fileID: 4881480141024262708}
-  maxDurability: 300
+  maxDurability: 20
   currentDurability: 0
+  rotatePart: {fileID: 2478114973352169950}
   HPBar: {fileID: 0}
+  isMachineDestroyed: 0
+  rotationSpeed: 100
 --- !u!65 &3626511177447271835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,6 +344,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4701265391155364598}
   m_SourcePrefab: {fileID: 100100000, guid: b1a7c23d527e9a2439a0ad5693a7ca37, type: 3}
+--- !u!1 &2478114973352169950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8487167654232718067, guid: b1a7c23d527e9a2439a0ad5693a7ca37, type: 3}
+  m_PrefabInstance: {fileID: 6317550219575847725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5775526835525717190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1a7c23d527e9a2439a0ad5693a7ca37, type: 3}

@@ -50,6 +50,12 @@ public class Interactor : MonoBehaviour
                 var cookMachine = collider.gameObject.GetComponent<CookMachine>();
                 cookMachine.CookMachineDamaged();
             }
+            if (collider.gameObject.GetComponent<HumanNormal>()&& CompareTag("Enemy"))
+            {
+                //cook machine damage
+                var human = collider.gameObject.GetComponent<HumanNormal>();
+                human.ChangeToEnemy();
+            }
             else if (collider.gameObject.GetComponent<CandyDevourer>())
             {
                 //boss damage

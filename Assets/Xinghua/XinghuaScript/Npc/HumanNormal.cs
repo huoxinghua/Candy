@@ -10,12 +10,18 @@ public class HumanNormal : Npc,IInteractable
     Npc npc;
     [SerializeField] private GameObject[] targets;
     public NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     private void Start()
     {
         // the render is for the human be changed by zombin and can also changed back by King
-       // childRenderer.material = humanMaterial;
+       // childRenderer =gameObject.GetComponent<Renderer>();
       //  npc = gameObject.GetComponent<Npc>();
         agent = GetComponent<NavMeshAgent>();
+        if (animator != null)
+        {
+            animator.SetBool("isWalking", false);
+        }
+        
     }
 
     public void ChangeToHuman()
@@ -26,15 +32,27 @@ public class HumanNormal : Npc,IInteractable
 
     public void ChangeToEnemy()
     {
+        Debug.Log("change to enemy");
         Destroy(this);
         if (this.gameObject.GetComponent<AIEnemy>() == null)
         {
             var enemyscript = this.gameObject.AddComponent<AIEnemy>();
             enemyscript.GetComponent<Renderer>();
-            childRenderer.material = enemyMaterial;
+            if (childRenderer.material != null)
+            {
+                childRenderer.material = enemyMaterial;
+            }
+            else
+            {
+                childRenderer = gameObject.AddComponent<Renderer>();
+            }
+            if (animator != null)
+            {
+                animator.SetBool("isWalking", true);
+            }
         }
         
-        agent.SetDestination(newTarget.position);
+        agent.SetDestination(EnemyManager.Instance.boss.transform.position);
     }
  
     private void HunmanMove()
@@ -43,12 +61,17 @@ public class HumanNormal : Npc,IInteractable
     }
     public void HumanMove()
     {
+
         agent = GetComponent<NavMeshAgent>();
 
         if (targets != null && targets.Length > 0)
         {
-            agent.SetDestination(targets[0].transform.position);
-            //agent.stoppingDistance = 0.2f;
+            for (int i = 0;i< targets.Length;i++)
+            {
+                agent.SetDestination(targets[0].transform.position);
+                //agent.stoppingDistance = 0.2f;
+            }
+
         }
         else
         {
