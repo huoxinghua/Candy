@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MoveDoor : MonoBehaviour,IInteractable
+public class MoveDoor : MonoBehaviour, IInteractable
 {
     private Vector3 closedPosition;
     protected Vector3 targetPosition;
     [SerializeField] Vector3 offsetPosition;
+ 
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class MoveDoor : MonoBehaviour,IInteractable
 
     public virtual void Interact()
     {
+        SoundManager.Instance.PlaySFX("doorOpen");
         // Set the target position relative to the closed position
         targetPosition = closedPosition + offsetPosition;
         StartCoroutine(MoveDoorCoroutine(targetPosition));

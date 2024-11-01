@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ItemCollect : MonoBehaviour
 {
     protected string  itemName;
+    
+
    
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +16,7 @@ public class ItemCollect : MonoBehaviour
         {
             gameObject.SetActive(false);
             //add collect sound here
-            SoundManager.Instance.PlaySFX("PickUp");
+            SoundManager.Instance.PlaySFX("collectSound");
            
            if (GameManager.Instance != null)
             {
@@ -25,6 +28,7 @@ public class ItemCollect : MonoBehaviour
             }
 
         }
+
     }
 
 }
