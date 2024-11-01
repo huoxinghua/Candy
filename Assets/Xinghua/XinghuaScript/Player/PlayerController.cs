@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         playerInput.PlayerControl.Move.performed += OnMove;
         playerInput.PlayerControl.CameraSwitch.performed += TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed += OnInteract;
+        playerInput.PlayerControl.Pause.performed += OnShowPauseMenu;
     }
 
     private void OnDisable()
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
         playerInput.PlayerControl.Move.canceled -= OnMove;
         playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed -= OnInteract;
+        playerInput.PlayerControl.Pause.performed += OnShowPauseMenu;
 
     }
 
@@ -91,6 +93,10 @@ public class PlayerController : MonoBehaviour
 
         targetMovement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
       
+    }
+    private void OnShowPauseMenu(InputAction.CallbackContext ctx)
+    {
+        UIManager.Instance.pauseMenu.SetActive(true);
     }
     private void OnInteract(InputAction.CallbackContext ctx)
     {

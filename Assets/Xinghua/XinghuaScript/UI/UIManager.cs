@@ -17,6 +17,7 @@ public class UIManager : Singleton<UIManager>
     [Header("GameState")]
     [SerializeField] public GameObject lostUI;
     [SerializeField] public GameObject winUI;
+    [SerializeField] public GameObject pauseMenu;
 
     private bool isCookMachineUIShow;
 
@@ -34,6 +35,7 @@ public class UIManager : Singleton<UIManager>
         candyHealPeople.SetActive(false);
         CookMachineUI.SetActive(false);
         lostUI.SetActive(false);
+        pauseMenu.SetActive(false);
         winUI.SetActive(false);
         isCookMachineUIShow = false;
     }
