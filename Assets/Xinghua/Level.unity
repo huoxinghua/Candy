@@ -1567,7 +1567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138326691}
   m_Layer: 0
-  m_Name: CookMachine
+  m_Name: CookMachine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5334,6 +5334,10 @@ PrefabInstance:
       propertyPath: cameraAlarm
       value: 
       objectReference: {fileID: 533050576}
+    - target: {fileID: 52999293027203453, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
+      propertyPath: offsetPosition.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1075161448048367929, guid: 630dca95281fb4c469e92cebc62cb627, type: 3}
       propertyPath: m_Name
       value: CityEntrance (1)
@@ -11688,7 +11692,7 @@ PrefabInstance:
     - target: {fileID: 6657015732213915566, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: HPBar
       value: 
-      objectReference: {fileID: 487445811}
+      objectReference: {fileID: 290437204}
     - target: {fileID: 6657015732213915566, guid: b4049b933dba14b4ab93f13a9cd12965, type: 3}
       propertyPath: rotatePart
       value: 
