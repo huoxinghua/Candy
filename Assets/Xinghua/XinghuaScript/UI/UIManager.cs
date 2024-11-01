@@ -35,7 +35,11 @@ public class UIManager : Singleton<UIManager>
         candyHealPeople.SetActive(false);
         CookMachineUI.SetActive(false);
         lostUI.SetActive(false);
-        pauseMenu.SetActive(false);
+        if (!pauseMenu)
+        {
+            pauseMenu.SetActive(false);
+        }
+       
         winUI.SetActive(false);
         isCookMachineUIShow = false;
     }

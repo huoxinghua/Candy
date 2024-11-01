@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     private void OnShowPauseMenu(InputAction.CallbackContext ctx)
     {
         UIManager.Instance.pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
     }
     private void OnInteract(InputAction.CallbackContext ctx)
     {

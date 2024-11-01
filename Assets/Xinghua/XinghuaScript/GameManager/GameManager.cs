@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -55,6 +56,20 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 0f;
         UIManager.Instance.timeRemaining = 0;
         UIManager.Instance.lostUI.SetActive(true);
+
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        UIManager.Instance.pauseMenu.SetActive(false);
+    }
+    public void RestartGame()
+    {
+        if (UIManager.Instance != null && UIManager.Instance.pauseMenu != null)
+        {
+            UIManager.Instance.pauseMenu.SetActive(false);
+        }
+        SceneLoader.Instance.LoadScene("Level");
 
     }
     public void WinGame()
