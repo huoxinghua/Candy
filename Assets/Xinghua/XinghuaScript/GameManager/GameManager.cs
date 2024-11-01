@@ -65,10 +65,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void RestartGame()
     {
-        if (UIManager.Instance != null && UIManager.Instance.pauseMenu != null)
-        {
-            UIManager.Instance.pauseMenu.SetActive(false);
-        }
+        //if (UIManager.Instance != null && UIManager.Instance.pauseMenu != null)
+        //{
+        //    UIManager.Instance.pauseMenu.SetActive(false);
+        //}
         SceneLoader.Instance.LoadScene("Level");
 
     }

@@ -53,9 +53,15 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-       //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-     
-        rb.velocity = targetMovement * moveSpeed;
+        //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+
+        
+
+        Vector3 currentVelocity = rb.velocity;
+        currentVelocity.y = rb.velocity.y;
+       
+        rb.velocity = targetMovement * moveSpeed + new Vector3(0, currentVelocity.y, 0);
+
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
         if (targetMovement != Vector3.zero)
