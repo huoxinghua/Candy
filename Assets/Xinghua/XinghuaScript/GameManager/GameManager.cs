@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -54,18 +55,33 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game over");
         Time.timeScale = 0f;
         UIManager.Instance.timeRemaining = 0;
-        UIManager.Instance.LostUI.SetActive(true);
+        UIManager.Instance.lostUI.SetActive(true);
+
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        UIManager.Instance.pauseMenu.SetActive(false);
+    }
+    public void RestartGame()
+    {
+        //if (UIManager.Instance != null && UIManager.Instance.pauseMenu != null)
+        //{
+        //    UIManager.Instance.pauseMenu.SetActive(false);
+        //}
+        SceneLoader.Instance.LoadScene("Level");
 
     }
     public void WinGame()
     {
         //if boss survive in certain amount of time player will win
-        Debug.Log("you win");
+        //Debug.Log("you win");
         // all the enemy and changed people will back to normal
 
         //stop spaw enemy 
         EnemyManager.Instance.StopSpawnEnemy();
         UIManager.Instance.timerUI.SetActive(false);
+        UIManager.Instance.winUI.SetActive(true);
         //show win menu
         Time.timeScale = 0f;
     }

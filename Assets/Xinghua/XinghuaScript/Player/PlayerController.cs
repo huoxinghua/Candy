@@ -53,9 +53,15 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-       //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-     
-        rb.velocity = targetMovement * moveSpeed;
+        //Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+
+        
+
+        Vector3 currentVelocity = rb.velocity;
+        currentVelocity.y = rb.velocity.y;
+       
+        rb.velocity = targetMovement * moveSpeed + new Vector3(0, currentVelocity.y, 0);
+
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
         if (targetMovement != Vector3.zero)
@@ -69,6 +75,7 @@ public class PlayerController : MonoBehaviour
         playerInput.PlayerControl.Move.performed += OnMove;
         playerInput.PlayerControl.CameraSwitch.performed += TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed += OnInteract;
+        playerInput.PlayerControl.Pause.performed += OnShowPauseMenu;
     }
 
     private void OnDisable()
@@ -77,6 +84,7 @@ public class PlayerController : MonoBehaviour
         playerInput.PlayerControl.Move.canceled -= OnMove;
         playerInput.PlayerControl.CameraSwitch.performed -= TopCameraSwitch;
         playerInput.PlayerControl.Interact.performed -= OnInteract;
+        playerInput.PlayerControl.Pause.performed += OnShowPauseMenu;
 
     }
 
@@ -91,6 +99,11 @@ public class PlayerController : MonoBehaviour
 
         targetMovement = forward.normalized * movementVector.y + right.normalized * movementVector.x;
       
+    }
+    private void OnShowPauseMenu(InputAction.CallbackContext ctx)
+    {
+        UIManager.Instance.pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
     }
     private void OnInteract(InputAction.CallbackContext ctx)
     {
